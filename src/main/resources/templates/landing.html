@@ -4,43 +4,78 @@
 <body>
 <!-- Login Section -->
     <img class="img-responsive" src="/images/banner.png" alt="banner"/>
-    <div class="container">
-        <div class="row ">
-            <div class="main-center ">
-                <div class="bg-danger" th:if="${param.error}">
-                    Invalid username and secret.
-                </div>
-                <div class="bg-danger" th:if="${param.logout}">
-                    You have been logged out.
-                </div>
-                <form class="form-signin" th:action="@{/index}" method="post">
-                    <h2 class="form-signin-heading">Please sign in</h2>
-                    <div class="form-group">
-                        <label for="username" class="sr-only">Username</label>
-                        <input type="text" roleId="username" class="form-control" placeholder="Username" name="username"
-                               id="username"
-                               required="required" autofocus="autofocus"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="sr-only">Password</label>
-                        <input type="password" roleId="inputPassword" class="form-control" placeholder="Password"
-                               id="password"
-                               name="password" required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" name="remember-me" id="remember-me"/> &nbsp; Remember me
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                </form>
-                
-                <hr />
-                
-                <div class="form-group ">
-                    <a type="submit" class="btn btn-info btn-lg btn-block login-button" th:href="@{/signup}">Sign up!</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+	
+	<!-- header -->
+
+	        <div class="container">
+	            <a href="http://localhost:8080/termproject/login.html">
+	            <img src="/images/register-login.png" alt="login" style="float:right;width:80px;height:80px;">
+	            </a>
+	            <h1>ALEX LIBRARY MANAGEMENT SYSTEM</h1>
+	                    
+	        </div>
+
+	<!-- navigation-->
+	<nav>
+	<ul>
+	  <li><a href="#services">SERVICES</a></li>
+	  <li><a href="#borrow&request">BORROW & REQUEST</a></li>
+	  <li><a href="#research&teaching">RESEARCH & TEACHING </a></li>
+	  <li><a href="#about">ABOUT</a></li>
+	  <li><a href="#contact">CONTACT</a></li>
+	</ul>
+	</nav>
+	
+	<!-- SEARCH -->
+	<div class="search">
+	     <form action="/search/">
+	        <div class="unosearch">
+	        <input name="cx" type="hidden" value="002646972799648025672:k_yu2m9ssto"/> 
+	        <input name="cof" type="hidden" value="FORID:11"/> 
+	        <input name="ie" type="hidden" value="UTF-8"/> 
+	        <label class="hide" for="q">Search Terms</label>
+	        <input id="q" name="q" placeholder="Search ALEX" type="search"/>
+	        <label class="ALEX">Search Schools</label>
+	<select>
+	<option value="0">Select...</option>
+	<option value="/booking/UNO" selected="selected">University of Nebraska-Omaha</option>
+	<option value="/booking/UNL">University of Nebraska-Lincoln</option>
+	<option value="/booking/UNK">University of Nebraska-Kearney</option>
+	</select>
+	<input type="submit" name="SubmitButton" value="Search"/>
+	<a href="https://www.google.com" target="_blank">Advanced search!</a>
+	
+	<button type="button"
+	onclick="document.getElementById('demo').innerHTML = Date()" style="float:right">
+	Click me to display Date and Time.</button>
+	
+	<p id="demo"></p>
+	     </div>
+	    </form>
+	</div>
+	
+	<div class= "middle">
+	<img src="http://www.library.illinois.edu/committee/rpc/images/rpcwordle.JPG" alt="image" style="float:center;width:900px;height:500px;">
+	</div>
+	
+	
+	<!-- others -->
+	<div>
+	<div style="float: left; width:330px;height:200px;">
+	<p><a href="https://www.google.com"><img src="http://minemotel.com/_images/request_room.png" alt="Request room" style="width:100px;height:100px;">
+	</a></p>
+	<p>Request a Room!</p>
+	</div>
+	<div style="float: left; width:330px;height:200px;">
+	<p><a href="https://www.google.com"><img src="https://img.clipartfox.com/db4918644a3a028f82192d4ccf56e606_images-for-upcoming-events-upcoming-event-clipart_1039-833.png" alt="Events" style="width:100px;height:100px;">
+	</a></p><p>Special Events!</p>
+	</div>
+	<div style="float: left; width:330px;height:200px;">
+	<p><a href="https://www.google.com"><img src="http://www.ece.umd.edu/~minwu/image/books_MSclip.gif" alt="Coursematerial" style="width:100px;height:100px;">
+	</a></p><p>Course Material!</p>
+	</div>
+	</div>
 
 <div th:replace="common/header :: body-bottom-scripts"/>
 
