@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.userfront.domain.BooksCheckedOut;	// TODO: fix
-import com.userfront.domain.BooksInCart;		// TODO: fix
-import com.userfront.domain.PrimaryAccount;
+import com.userfront.domain.BooksCheckedOut;	// TODO: add
+import com.userfront.domain.BooksInCart;		// TODO: add
+import com.userfront.domain.PrimaryAccount;		// TODO: add
 import com.userfront.domain.User;
 import com.userfront.service.UserService;
 
