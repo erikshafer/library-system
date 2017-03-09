@@ -14,20 +14,16 @@
         <div class="main-login main-center">
             <form class="form-horizontal" method="post" th:action="@{/signup}">
 
-				<!-- first name -->
                 <div class="form-group">
                     <label for="firstName" class="cols-sm-2 control-label">First Name</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <!-- Assuming there is a user object already -->
-                            <!-- Binding ${user.firstName} to firstName -->
                             <input type="text" class="form-control" th:value="${user.firstName}" id="firstName" name="firstName" roleId="firstname"  placeholder="Enter your first name" required="required"/>
                         </div>
                     </div>
                 </div>
 
-				<!-- last name -->
                 <div class="form-group">
                     <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
                     <div class="cols-sm-10">
@@ -38,22 +34,18 @@
                     </div>
                 </div>
 
-				<!-- NUID -->
-				<!-- CURRENTLY DISABLED
                 <div class="form-group">
-                    <label for="nuid" class="cols-sm-2 control-label">NUID</label>
+                    <label for="phone" class="cols-sm-2 control-label">Phone</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-nuid fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" th:value="${user.nuid}" id="nuid" name="nuid" roleId="nuid"  placeholder="12345678" required="required"/>
+                            <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.phone}" id="phone" name="phone" roleId="phone"  placeholder="xxx-xxx-xxxx" required="required"/>
                         </div>
                     </div>
                 </div>
-                 -->
 
-				<!-- email -->
                 <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Email</label><span class="bg-danger pull-right" th:if="${emailExists}">Email already exists</span>
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label><span class="bg-danger pull-right" th:if="${emailExists}">Email already exists</span>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -62,9 +54,7 @@
                     </div>
                 </div>
 
-				<!-- user name -->
                 <div class="form-group">
-                	<!-- By checking the boolean value, can determine if an username already exists. ALA: th:if="${usernameExists}"-->
                     <label for="username" class="cols-sm-2 control-label">Username</label><span class="bg-danger pull-right" th:if="${usernameExists}">Username already exists</span>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -74,7 +64,6 @@
                     </div>
                 </div>
 
-				<!-- password -->
                 <div class="form-group">
                     <label for="password" class="cols-sm-2 control-label">Password</label>
                     <div class="cols-sm-10">
@@ -82,7 +71,6 @@
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input type="password" class="form-control" th:value="${user.password}" id="password" name="password" roleId="password"  placeholder="Enter your Password" required="required"/>
                         </div>
-                        <!-- show password -->
                         <div class="checkbox">
                             <label>
                                 <input id="showPassword" type="checkbox" />Show Password
@@ -101,7 +89,6 @@
                     <!--</div>-->
                 <!--</div>-->
 
-				<!-- submit / sign-up -->
                 <div class="form-group ">
                     <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign up!</button>
                 </div>
@@ -117,7 +104,7 @@
 </div>
 
 
-<div th:replace="common/header :: body-bottom-scripts" />	<!-- footer fragment -->
+<div th:replace="common/header :: body-bottom-scripts" />
 
 </body>
 </html>

@@ -77,7 +77,7 @@ $(document).ready(function() {
         format: "yyyy-mm-dd hh:mm",
         autoclose: true,
         todayBtn: true,
-        startDate: "2016-03-01 10:00",
+        startDate: "2013-02-14 10:00",
         minuteStep: 10
     });
 
