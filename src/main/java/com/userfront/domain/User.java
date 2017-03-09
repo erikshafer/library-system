@@ -18,46 +18,41 @@ import javax.persistence.OneToOne;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.userfront.domain.security.Authority;
 import com.userfront.domain.security.UserRole;
 
 @Entity
-public class User implements UserDetails {
-	
+public class User implements UserDetails{
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "userId", nullable = false, updatable = false)
-	private Long userId;			// incrementing value
-	private String username;		// user defined
-	private String password;		// user defined
-	private String firstName;		// user defined
-	private String lastName;		// user defined
-	
+    private Long userId;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+
     @Column(name = "email", nullable = false, unique = true)
-	private String email;			// user defined
-	private Long nuId;				// user defined (NUID)
-	private Integer userGroupId;	// auto-assigned by application
-	private boolean enabled=true;	// automatically enabled, can be disabled by admin
-	
+    private String email;
+    private String phone;
+
+    private boolean enabled=true;
+
     @OneToOne
     private PrimaryAccount primaryAccount;
-	
+
+    @OneToOne
+    private SavingsAccount savingsAccount;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
-	private List<Appointment> appointmentList;
-    
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JsonIgnore
-//	private List<BooksCheckedOut> booksInCart;
-    
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JsonIgnore
-//	private List<BooksCheckedOut> booksCheckedOutList;
-    
+    private List<Appointment> appointmentList;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Recipient> recipientList;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
@@ -70,83 +65,53 @@ public class User implements UserDetails {
         this.userRoles = userRoles;
     }
 
-	// toString
-	@Override
-	public String toString() {
-		return "Users [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", email=" + email + ", nuId=" + nuId + ", userGroupId="
-				+ userGroupId + ", enabled=" + enabled + "]";
-	}
-	
-	// Getters and Setters
-	
-	public Long getUserId() {
-		return userId;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Long getNuId() {
-		return nuId;
-	}
-
-	public void setNuId(Long nuId) {
-		this.nuId = nuId;
-	}
-
-	public Integer getUserGroupId() {
-		return userGroupId;
-	}
-
-	public void setUserGroupId(Integer userGroupId) {
-		this.userGroupId = userGroupId;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public List<Appointment> getAppointmentList() {
         return appointmentList;
@@ -156,9 +121,58 @@ public class User implements UserDetails {
         this.appointmentList = appointmentList;
     }
 
-    // New. Understand this.
-    // Grant authority. Uses generics.
-    // We don't know the generic class, but whatever it will extend `GrantedAuthority`.
+    public List<Recipient> getRecipientList() {
+        return recipientList;
+    }
+
+    public void setRecipientList(List<Recipient> recipientList) {
+        this.recipientList = recipientList;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public PrimaryAccount getPrimaryAccount() {
+        return primaryAccount;
+    }
+
+    public void setPrimaryAccount(PrimaryAccount primaryAccount) {
+        this.primaryAccount = primaryAccount;
+    }
+
+    public SavingsAccount getSavingsAccount() {
+        return savingsAccount;
+    }
+
+    public void setSavingsAccount(SavingsAccount savingsAccount) {
+        this.savingsAccount = savingsAccount;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", appointmentList=" + appointmentList +
+                ", recipientList=" + recipientList +
+                ", userRoles=" + userRoles +
+                '}';
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
@@ -189,19 +203,5 @@ public class User implements UserDetails {
         return enabled;
     }
 
-//	public List<BooksCheckedOut> getBooksInCart() {
-//		return booksInCart;
-//	}
-//    
-//	public void setBooksInCart(List<BooksCheckedOut> booksInCart) {
-//		this.booksInCart = booksInCart;
-//	}
-//
-//	public List<BooksCheckedOut> getBooksCheckedOutList() {
-//		return booksCheckedOutList;
-//	}
-//
-//	public void setBooksCheckedOutList(List<BooksCheckedOut> booksCheckedOutList) {
-//		this.booksCheckedOutList = booksCheckedOutList;
-//	}
+
 }

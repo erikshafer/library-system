@@ -9,8 +9,9 @@ import com.userfront.domain.SavingsTransaction;
 
 public interface AccountService {
 	PrimaryAccount createPrimaryAccount();
-    //void deposit(String accountType, double amount, Principal principal);
-    //void withdraw(String accountType, double amount, Principal principal);
+    SavingsAccount createSavingsAccount();
+    void deposit(String accountType, double amount, Principal principal);
+    void withdraw(String accountType, double amount, Principal principal);
     
     
 }

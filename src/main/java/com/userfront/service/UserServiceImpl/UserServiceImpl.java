@@ -14,26 +14,27 @@ import com.userfront.dao.RoleDao;
 import com.userfront.dao.UserDao;
 import com.userfront.domain.User;
 import com.userfront.domain.security.UserRole;
-//import com.userfront.service.AccountService;
+import com.userfront.service.AccountService;
 import com.userfront.service.UserService;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService{
 	
-	// Define a logger.
 	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 	
-	// The idea of Autowiring has to do with `Dependency Injenction` design pattern
 	@Autowired
 	private UserDao userDao;
 	
 	@Autowired
-	private RoleDao roleDao;
+    private RoleDao roleDao;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+    
+    @Autowired
+    private AccountService accountService;
 	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
-	
-    // Save
 	public void save(User user) {
         userDao.save(user);
     }
@@ -46,25 +47,24 @@ public class UserServiceImpl implements UserService{
         return userDao.findByEmail(email);
     }
     
-    // Take two paramters. Sees if user exists, then...
+    
     public User createUser(User user, Set<UserRole> userRoles) {
         User localUser = userDao.findByUsername(user.getUsername());
 
         if (localUser != null) {
             LOG.info("User with username {} already exist. Nothing will be done. ", user.getUsername());
         } else {
-        	// 1. Encrypt password
             String encryptedPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(encryptedPassword);
 
-            // 2. Add user rows to the user we have assigned
             for (UserRole ur : userRoles) {
                 roleDao.save(ur.getRole());
             }
 
-            // 3. Bind a new Primary Account to the user
             user.getUserRoles().addAll(userRoles);
+
             user.setPrimaryAccount(accountService.createPrimaryAccount());
+            user.setSavingsAccount(accountService.createSavingsAccount());
 
             localUser = userDao.save(user);
         }
@@ -72,7 +72,6 @@ public class UserServiceImpl implements UserService{
         return localUser;
     }
     
-    // Takes both params
     public boolean checkUserExists(String username, String email){
         if (checkUsernameExists(username) || checkEmailExists(username)) {
             return true;
@@ -95,5 +94,27 @@ public class UserServiceImpl implements UserService{
         }
 
         return false;
+    }
+
+    public User saveUser (User user) {
+        return userDao.save(user);
+    }
+    
+    public List<User> findUserList() {
+        return userDao.findAll();
+    }
+
+    public void enableUser (String username) {
+        User user = findByUsername(username);
+        user.setEnabled(true);
+        userDao.save(user);
+    }
+
+    public void disableUser (String username) {
+        User user = findByUsername(username);
+        user.setEnabled(false);
+        System.out.println(user.isEnabled());
+        userDao.save(user);
+        System.out.println(username + " is disabled.");
     }
 }

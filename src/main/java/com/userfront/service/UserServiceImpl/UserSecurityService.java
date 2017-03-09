@@ -22,13 +22,11 @@ public class UserSecurityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	// Bring in the parameter username, which will be found by the userDao object
-    	// It comes from the login page
         User user = userDao.findByUsername(username);
         if (null == user) {
             LOG.warn("Username {} not found", username);
             throw new UsernameNotFoundException("Username " + username + " not found");
         }
-        return user;	// AKA it was found
+        return user;
     }
 }

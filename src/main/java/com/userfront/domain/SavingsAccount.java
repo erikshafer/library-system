@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class PrimaryAccount {
+public class SavingsAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,9 +22,9 @@ public class PrimaryAccount {
     private int accountNumber;
     private BigDecimal accountBalance;
 
-    @OneToMany(mappedBy = "primaryAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "savingsAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<PrimaryTransaction> primaryTransactionList;
+    private List<SavingsTransaction> savingsTransactionList;
 
     public Long getId() {
         return id;
@@ -50,16 +50,13 @@ public class PrimaryAccount {
         this.accountBalance = accountBalance;
     }
 
-    public List<PrimaryTransaction> getPrimaryTransactionList() {
-        return primaryTransactionList;
+    public List<SavingsTransaction> getSavingsTransactionList() {
+        return savingsTransactionList;
     }
 
-    public void setPrimaryTransactionList(List<PrimaryTransaction> primaryTransactionList) {
-        this.primaryTransactionList = primaryTransactionList;
+    public void setSavingsTransactionList(List<SavingsTransaction> savingsTransactionList) {
+        this.savingsTransactionList = savingsTransactionList;
     }
 
 
 }
-
-
-
