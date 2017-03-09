@@ -66,7 +66,7 @@ public class HomeController {
             return "signup";
         } else {
         	// Else, save to database
-            userService.save(user);        	// Used to be .createUser
+            userService.createUser(user);        	// Used to be .createUser
 
             return "redirect:/";			// When done, redirect to the index page
         }
