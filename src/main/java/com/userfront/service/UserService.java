@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.userfront.domain.User;
+import com.userfront.domain.security.UserRole;
 
 public interface UserService {
 	User findByUsername(String username);
@@ -15,7 +16,10 @@ public interface UserService {
     
     void save (User user);
     
+    // Must define this before it gets wired
+    User createUser(User user, Set<UserRole> userRoles);
+    
     //Not yet...
-    //void saveUser (User user); 
+    //void saveUser (User user);
     
 }
