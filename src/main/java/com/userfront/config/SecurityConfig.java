@@ -25,13 +25,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserSecurityService userSecurityService;
 
-    private static final String SALT = "salt"; // Salt should be protected carefully
+    private static final String SALT = "salt"; 	// SALT should be protected carefully
+    // Used as a `seed` for encryption.
 
+    // Did not write much of this SecurityConfig code. Still need to invest time into
+    // understanding all the details of Spring Security.
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12, new SecureRandom(SALT.getBytes()));
     }
 
+    // ** means = at this path and anything behond this path
     private static final String[] PUBLIC_MATCHERS = {
             "/webjars/**",
             "/css/**",
