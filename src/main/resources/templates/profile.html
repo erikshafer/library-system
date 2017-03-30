@@ -5,7 +5,7 @@
 <head th:replace="common/header :: navbar"/>
 <div class="container">
     <div class="row main">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h2 class="title">My Profile</h2>
             <hr/>
             <form method="post" th:action="@{/user/profile}">
@@ -79,7 +79,7 @@
 
             </form>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="panel-heading">
                 <div class="panel-title text-center">
                     <h1 class="title">Your Account Information</h1>
@@ -93,7 +93,27 @@
 
                     <tr>
                         <td data-th-text="${user.primaryAccount.accountNumber}">...</td>
-                        <td data-th-text="">$0.00</td>
+                        <td>$0.00</td>	<!-- FIX THIS WITH BOOKS -->
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Books Checked Out</h1>
+                    <hr/>
+                </div>
+                <table class="responstable">
+                    <tr class="row">		<!-- TODO: FIX Bootstrap -->
+                        <th class="col-mid-3">Book ID (ISBN)</th>
+                        <th class="col-mid-5">Book Name</th>
+                        <th class="col-mid-4">Author Name</th>
+                    </tr>
+                    <tr class="row">		<!-- TODO: FIX Bootstrap -->
+                        <td class="col-mid-3">123456789</td>
+                        <td class="col-mid-5">Lord of the Rings</td>	<!-- FIX THIS WITH BOOKS -->
+                        <td class="col-mid-4">JRR Tolkien</td>
                     </tr>
                 </table>
             </div>
