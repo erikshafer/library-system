@@ -10,6 +10,7 @@ import com.userfront.domain.Book;
 // are based off of the `findBy` prefix.
 // I.E. `findbyAuthor` will create an author-searching method
 public interface BookDao extends CrudRepository<Book, Long> {
+	Book findById(Long id);
 	Book findByBookTitle(String bookTitle);
     Book findByAuthor(String author);
     Book findByIsbn(Long isbn);
