@@ -64,7 +64,8 @@ public class HomeController {
         	 Set<UserRole> userRoles = new HashSet<>();
         	 // Standard naming convention for Spring Security. ROLE, underscore, ROLE NAME in all caps.
         	 // This is important as it'll be the basis for user authentication.
-        	 // TL;DR: "ROLE_USER" needs to be added to the table otherwise registration will not work.
+        	 // "ROLE_USER" needs to be added to the `role` table otherwise registration will not work.
+        	 // 04-04-2017: I've added code to schema.sql and data.sql that will take care of this.
              userRoles.add(new UserRole(user, roleDao.findByName("ROLE_USER")));
 
             userService.createUser(user, userRoles);
