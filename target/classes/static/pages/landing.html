@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+<title>Term project</title>
+<meta charset="UTF-8">
+<meta name="author" content="Yuchen Wang">
+<meta name="description" content="A website focused on ALEX LIBRARY MANAGEMENT SYSTEM" />
+<style>
+
+div.container{
+     width: 100%;
+    border: 5px solid gray;
+}
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+nav li {
+    float:left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111111;
+}
+</style>
+</head>
+
+
+
+<body>
+<div class="container">
+
+<!-- header -->
+        <header>
+            <a href="http://localhost:8080/termproject/login.html">
+            <img src="https://0.s3.envato.com/files/166459326/register-login-add-on.png" alt="login" style="float:right;width:80px;height:80px;">
+            </a>
+            <h1>ALEX LIBRARY MANAGEMENT SYSTEM</h1>
+                    
+        </header>
+<!-- navigation-->
+<nav>
+<ul>
+  <li><a href="#services">SERVICES</a></li>
+  <li><a href="#borrow&request">BORROW & REQUEST</a></li>
+  <li><a href="#research&teaching">RESEARCH & TEACHING </a></li>
+  <li><a href="#about">ABOUT</a></li>
+  <li><a href="#contact">CONTACT</a></li>
+</ul>
+</nav>
+
+<!-- SEARCH -->
+<div class="search">
+     <form action="/search/">
+        <div class="unosearch">
+        <input name="cx" type="hidden" value="002646972799648025672:k_yu2m9ssto"/> 
+        <input name="cof" type="hidden" value="FORID:11"/> 
+        <input name="ie" type="hidden" value="UTF-8"/> 
+        <label class="hide" for="q">Search Terms</label>
+        <input id="q" name="q" placeholder="Search ALEX" type="search"/>
+        <label class="ALEX">Search Schools</label>
+<select>
+<option value="0">Select...</option>
+<option value="/booking/UNO" selected="selected">University of Nebraska-Omaha</option>
+<option value="/booking/UNL">University of Nebraska-Lincoln</option>
+<option value="/booking/UNK">University of Nebraska-Kearney</option>
+</select>
+<input type="submit" name="SubmitButton" value="Search"/>
+<a href="https://www.google.com" target="_blank">Advanced search!</a>
+
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()" style="float:right">
+Click me to display Date and Time.</button>
+
+<p id="demo"></p>
+     </div>
+    </form>
+</div>
+
+<div class= "middle">
+<img src="http://www.library.illinois.edu/committee/rpc/images/rpcwordle.JPG" alt="image" style="float:center;width:900px;height:500px;">
+</div>
+
+
+<!-- others -->
+<div>
+<div style="float: left; width:330px;height:200px;">
+<p><a href="https://www.google.com"><img src="http://minemotel.com/_images/request_room.png" alt="Request room" style="width:100px;height:100px;">
+</a></p>
+<p>Request a Room!</p>
+</div>
+<div style="float: left; width:330px;height:200px;">
+<p><a href="https://www.google.com"><img src="https://img.clipartfox.com/db4918644a3a028f82192d4ccf56e606_images-for-upcoming-events-upcoming-event-clipart_1039-833.png" alt="Events" style="width:100px;height:100px;">
+</a></p><p>Special Events!</p>
+</div>
+<div style="float: left; width:330px;height:200px;">
+<p><a href="https://www.google.com"><img src="http://www.ece.umd.edu/~minwu/image/books_MSclip.gif" alt="Coursematerial" style="width:100px;height:100px;">
+</a></p><p>Course Material!</p>
+</div>
+</div>
+
+
+<footer>
+<small>Copyright &copy; ALEX LMS</small>
+<ul>
+     <li class="footer-link"><a href="https://twitter.com/?lang=en" id="link-tw" target="_BLANK">Twitter</a></li>
+     <li class="footer-link"><a href="http://www.instagram.com/" id="link-ig" target="_BLANK">Instagram</a></li>
+     <li class="footer-link"><a href="http://www.facebook.com/" id="link-fb" target="_BLANK">Facebook</a></li>
+</ul>
+
+</footer>
+</body>
+</html>

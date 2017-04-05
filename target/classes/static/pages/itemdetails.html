@@ -1,0 +1,158 @@
+<html lang="en">
+<head>
+  <title>Book Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){	
+		$('#example').DataTable();		
+    });
+  </script>
+    
+    <style type="text/css">
+        .divBookDetails h1{
+            color:#1A2D4F;
+            font-family: 'Open Sans',"Segoe UI","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        }
+        .divBookDetails h3, .divBookDetails h4{
+            color:#686464;
+            margin-top:10px;
+        }
+        .divBookDetails h4{
+            font-style:oblique;            
+        }
+        .divSuggestions h3{
+            margin-bottom: 15px;
+        }
+        .divRightBox{
+            margin-top:30px;
+        }
+        .divBookDetails .divBox{            
+            border-radius: 10px;
+            padding: 7px;
+            text-align: center;
+            max-width: 135px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .divBookDetails .green{
+            background-color: #B1F0B1;
+            color: green;
+        }
+        .divBookDetails .blue{
+            background-color: #B8C9FF;
+            color: royalblue;
+        }
+        .divBookDetails .divBox img{
+            width:28px;
+        }
+        .divBox strong{
+            margin-right:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container divBookDetails">
+        <div>
+            <div class="col-md-8">
+                <h1>Finding Our Place In The Universe</h1>
+                <h3>JACK CHENG</h3>
+                <h4>March 2017 - Book Page Publisher</h4>
+            </div>
+            <div class="col-md-4 divRightBox">
+                <div class="divBox green">
+                    <img src="http://a.dryicons.com/images/icon_sets/colorful_stickers_part_3_icons_set/png/256x256/shopping_cart_accept.png"/>
+                    <strong>Check Out</strong>                
+                </div>
+                <div class="divBox blue">
+                    <img src="https://progressivenutritional.com/hypfiles/uploads/2015/12/heart-icon.png">
+                    <strong>Wish List</strong>
+                </div>                
+            </div>
+        </div>
+        <div>
+            <div class="col-md-12">
+                <hr/>
+                <p>Jack Cheng’s all-time favorite book is The Little Prince, the beloved classic in which a pilot who has crashed in the desert encounters a young interplanetary traveler. So perhaps it’s no coincidence that Cheng’s inventive middle grade debut, See You in the Cosmos, concerns an 11-year-old traveler named Alex Petroski who is making a recording that he hopes extraterrestrials will hear.</p>
+
+                <p>Cheng came up with the idea several Thanksgivings ago while hanging out in his younger brother’s room. He spotted a Carl Sagan book that reminded him of the Golden Record that Sagan helped create, containing images and sounds intended to portray life on Earth to extraterrestrials, which was launched aboard two NASA Voyager spacecraft in 1977.</p>
+
+                <p><i><b>“The next morning I woke up and had this idea for a story about a boy and his dog, and trying to launch a rocket into space,” Cheng recalls, speaking from his home in Detroit. “It immediately started to take on a life of its own.”</b></i></p>
+
+                <p>His character Alex idolizes Sagan so much that his dog is named after the astronomer. The pair board a train from their Colorado home to travel to a rocket festival in New Mexico, where Alex hopes to launch his own vessel into space. Meanwhile, he’s recording his thoughts on his golden iPod, transcripts of which comprise the novel’s chapters.</p>
+
+                <p>Alex is also in search of his father (who died when Alex was 3 but whom he suspects may still be alive), and so he travels in some unexpected directions, ending up in Las Vegas and Los Angeles. One reason that Alex is able to embark on his journey is that his mother has “quiet days” in bed. She’s eventually hospitalized for schizophrenia, an illness that Cheng portrays compassionately without making it a focus.</p>
+
+                <p>Along the way, Alex stumbles upon many discoveries, including a half-sister named Terra, whose existence was equally surprising to the author. “When I started that chapter, the door opens and Terra was there,” says Cheng. “That magical surprise of finding a new character or having your characters see something completely different from what you’re expecting—that’s one of the reasons I keep writing.”</p>
+
+                <p>The 33-year-old’s path to becoming a writer has involved its own share of twists and turns. Born in Shanghai, he moved at age 5 to Detroit, where his father was earning a master’s degree in engineering. As a young immigrant, Cheng didn’t speak English and had a different name: Yuan. He remembers picking his English name because he loved playing cards and was familiar with the letter J on the jacks.</p>
+
+                <p>As Cheng reminisces about those early days in America, two of the first things he mentions are a dog and rockets—both major features of his novel. For a while his family lived in a mansion-like home whose elderly owner had a golden retriever. Cheng also remembers being mystified by the pictures of toy rockets he saw on certain cereal boxes, and describes trying to build rockets out of the cereal, not understanding that the toys were something to be sent away for.</p>
+
+                <p>Cheng loved to draw and later became adept at Photoshop. He majored in communication studies at the University of Michigan, then worked in advertising in New York, first as an art director and later as a copywriter. Eventually he and two partners started their own design studio, building websites and apps for startups and other companies. During this time he started journaling, which evolved into writing an adult novel, These Days, which examines relationships and technology through the lens of a young Midwesterner working in New York. He funded that novel through Kickstarter, an experience that taught Cheng a lot about publishing and also put him in touch with his agent.</p>
+                
+                <hr/>
+            </div>
+        </div>
+        
+        <div>
+            <div class="col-md-12 divSuggestions">
+                <h3>Suggestions</h3>
+                <table id="example" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Published</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>                
+                            <td>Harry Porter</td>
+                            <td>Tiger Nixon</td>
+                            <td>2016/04/25</td>
+                            <td>$800</td>
+                        </tr>
+                        <tr>                
+                            <td>Twilight</td>
+                            <td>Garrett Winters</td>
+                            <td>2016/07/25</td>
+                            <td>$750</td>
+                        </tr>
+                        <tr>                
+                            <td>Game Of Thrones</td>
+                            <td>Ashton Cox</td>
+                            <td>2017/01/12</td>
+                            <td>$200</td>
+                        </tr>
+                        <tr>                
+                            <td>Naruto Shippuden</td>
+                            <td>Cedric Kelly</td>
+                            <td>2016/03/29</td>
+                            <td>$460</td>
+                        </tr>            
+                        <tr>                
+                            <td>Hunger Games</td>
+                            <td>Olivia Liang</td>
+                            <td>2017/02/03</td>
+                            <td>$235</td>
+                        </tr>
+                        <tr>                
+                            <td>Maze Runner</td>
+                            <td>Bruno Nash</td>
+                            <td>2015/05/03</td>
+                            <td>$163</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
