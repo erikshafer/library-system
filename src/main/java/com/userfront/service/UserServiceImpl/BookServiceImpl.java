@@ -1,5 +1,7 @@
 package com.userfront.service.UserServiceImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +30,15 @@ public class BookServiceImpl implements BookService {
 		return null;
 	}
 	// TODO: Everything else
+
+	@Override
+	public Book findById(long id) {
+		return bookDao.findById(id);
+	}
+
+	@Override
+	public List<Book> findAll() {
+		// TODO Auto-generated method stub
+		return bookDao.findAll();
+	}
 }

@@ -1,15 +1,15 @@
 package com.userfront.service;
 
 import java.util.List;
-import java.util.Set;
 
 import com.userfront.domain.Book;
-import com.userfront.domain.User;
-import com.userfront.domain.security.UserRole;
+
 // TODO: fix this for Book
 public interface BookService {
 	Book findByTitle(String title);
     Book findByIsbn(long isbn);
+    Book findById(long id);
+    List<Book> findAll();
 
 //    boolean checkUserExists(String username, String email);
 //
