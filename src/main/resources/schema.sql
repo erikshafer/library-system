@@ -4,3 +4,12 @@ CREATE TABLE IF NOT EXISTS `role` (
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`role_id`)
 );
+
+CREATE TABLE IF NOT EXISTS `book` (
+  `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `author_name` varchar(255) NOT NULL,
+  `book_title` varchar(255) NOT NULL,
+  `isbn` int DEFAULT NULL,
+  `publication_country` varchar(255) DEFAULT NULL,
+  `publication_year` varchar (255) DEFAULT NULL
+);
