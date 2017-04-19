@@ -27,13 +27,13 @@ public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", nullable = false, updatable = false)
+	@Column(name = "book_id", nullable = false, updatable = false)
 	private Long id;
 	@Column(name = "isbn", nullable = false, unique = true)
 	private Long isbn;
 	@Column(name = "book_title", nullable = false, unique = false)
 	private String bookTitle;
-	@Column(name = "author_name", nullable = false, unique = false)
+	@Column(name = "author_id", nullable = false, unique = false)
 	private String author;
 	@Column(name = "publication_country", nullable = true, unique = false)
 	private String publicationCountry;

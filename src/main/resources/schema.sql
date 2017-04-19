@@ -13,3 +13,9 @@ CREATE TABLE IF NOT EXISTS `book` (
   `publication_country` varchar(255) DEFAULT NULL,
   `publication_year` varchar (255) DEFAULT NULL
 );
+
+CREATE TABLE IF NOT EXISTS `author` (
+  `author_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `author_name` varchar(255) NOT NULL,
+  `author_country` varchar(255) NULL
+);

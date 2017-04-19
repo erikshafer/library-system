@@ -15,6 +15,12 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	
+	// Re-route
+	@RequestMapping(value = "/")
+	public String routeToInventory() {
+		return "redirect:/library/inventory";
+	}
 
 	// View the entire inventory
 	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
