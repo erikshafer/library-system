@@ -32,4 +32,9 @@ public class AuthorServiceImpl implements AuthorService{
 		return authorDao.findAll();
 	}
 
+	@Override
+	public Author findByCountry(Long id) {
+		return authorDao.findByCountry(id);
+	}
+
 }

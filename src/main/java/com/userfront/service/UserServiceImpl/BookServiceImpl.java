@@ -39,4 +39,15 @@ public class BookServiceImpl implements BookService {
 		// TODO Auto-generated method stub
 		return bookDao.findAll();
 	}
+	
+	@Override
+	public List<Book> findByGenre(int genre) {
+		return bookDao.findByGenre(genre);
+	}
+
+	@Override
+	public void save(Book book) {
+		bookDao.save(book);
+		
+	}
 }

@@ -12,7 +12,8 @@ import com.userfront.domain.Book;
 public interface BookDao extends CrudRepository<Book, Long> {
 	Book findById(Long id);
 	Book findByBookTitle(String bookTitle);
-    Book findByAuthor(String author);
+    Book findByAuthor(Long author);
     Book findByIsbn(Long isbn);
     List<Book> findAll();
+    List<Book> findByGenre(Integer genre);
 }

@@ -7,6 +7,6 @@ import com.userfront.domain.Author;
 public interface AuthorService {
 	Author findById(Long id);
 	Author findByName(String name);
-	// TODO: Find by country
+	Author findByCountry(Long id);
 	List<Author> findAll();
 }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inventory</title>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<!-- <link rel="stylesheet" href="css/site.css" /> -->
+
+<!-- Custom in-line CSS until I better fit this into my environment / container -->
+<!-- At the end of the day this is all for the mock-up until using UPRR standards -->
+<style>
+body {
+	font-style: normal;
+	font-variant-ligatures: normal;
+	font-variant-caps: normal;
+	font-variant-numeric: normal;
+	font-weight: normal;
+	font-stretch: normal;
+	font-size: 12px;
+	line-height: 1.231;
+	font-family: verdana, arial, helvetica, clean, sans-serif;
+}
+
+table {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+</style>
+
+</head>
+<body>
+	<div class="container divBookDetails">
+		<div class="row">
+			<div class="col-lg-9 col-md-9 col-sm-12">
+				<h1 class="display-1">
+					<span th:text="${unit.bookTitle}" />
+				</h1>
+				<h3 class="display-3">
+					<a th:href="@{/authors/id/{id}(id=${unit.author})}">
+					<span th:text="${unit.author}" />
+					</a>
+				</h3>
+				<h5 class="display-5">
+					<span th:text="${unit.publicationYear}" />
+				</h5>
+				<h5 class="display-5">
+					<span th:text="${unit.publicationCountry}" />
+				</h5>
+				<h5 class="display-5">
+					<span th:text="${unit.isbn}" />
+				</h5>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-12">
+				<a th:href="@{/edit/{id}(id=${unit.id})}">
+					<button type="button" class="btn btn-primary btn-lg" style="width: 100%;">Check Out</button>
+				</a>
+				<a th:href="@{/delete/{id}(id=${unit.id})}">
+					<button type="button" class="btn btn-info btn-lg" style="width: 100%;">Wish List</button>
+				</a>
+			</div>
+		</div>
+		<div class="row">
+		
+		</div>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Description</div>
+				<div class="panel-body">
+					<span th:text="${unit.description}" />
+				</div>
+			</div>
+		</div>
+
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Description</div>
+				<div class="panel-body">
+					<table id="example" class="display" cellspacing="1" width="100%">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Author</th>
+								<th>Published</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Harry Porter</td>
+								<td>Tiger Nixon</td>
+								<td>2016/04/25</td>
+								<td>$800</td>
+							</tr>
+							<tr>
+								<td>Twilight</td>
+								<td>Garrett Winters</td>
+								<td>2016/07/25</td>
+								<td>$750</td>
+							</tr>
+							<tr>
+								<td>Game Of Thrones</td>
+								<td>Ashton Cox</td>
+								<td>2017/01/12</td>
+								<td>$200</td>
+							</tr>
+							<tr>
+								<td>Naruto Shippuden</td>
+								<td>Cedric Kelly</td>
+								<td>2016/03/29</td>
+								<td>$460</td>
+							</tr>
+							<tr>
+								<td>Hunger Games</td>
+								<td>Olivia Liang</td>
+								<td>2017/02/03</td>
+								<td>$235</td>
+							</tr>
+							<tr>
+								<td>Maze Runner</td>
+								<td>Bruno Nash</td>
+								<td>2015/05/03</td>
+								<td>$163</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

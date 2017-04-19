@@ -15,18 +15,18 @@ public class Author {
 	private Long id;
 	@Column(name = "author_name")
 	private String name;
-	// TODO: Country of author
-	//@Column(name = "author_country")
-	//private String country;
+	@Column(name = "author_country")
+	private Long country;
 	
 	// Blank needed for Hibernate, apparently.
 	public Author() {
 		
 	}
 
-	public Author(Long id, String name) {
+	public Author(Long id, String name, Long country) {
 		this.id = id;
 		this.name = name;
+		this.country = country;
 	}
 
 	public Long getId() {
@@ -43,6 +43,14 @@ public class Author {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Long getCountry() {
+		return country;
+	}
+
+	public void setCountry(Long country) {
+		this.country = country;
 	}
 
 }

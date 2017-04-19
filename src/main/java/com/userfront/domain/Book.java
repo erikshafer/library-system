@@ -1,10 +1,16 @@
 package com.userfront.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Book {
@@ -17,25 +23,31 @@ public class Book {
 	private Long isbn;
 	@Column(name = "book_title", nullable = false, unique = false)
 	private String bookTitle;
-	@Column(name = "author_id", nullable = false, unique = false)
-	private String author;
+	@Column(name = "author_id")
+	private Integer author;
 	@Column(name = "publication_country", nullable = true, unique = false)
 	private String publicationCountry;
 	@Column(name = "publication_year", nullable = true, unique = false)
 	private Integer publicationYear;
+	@Column(name = "genre_id")
+	private Integer genre;
+	@Column(name = "book_description")
+	private String description;
+	// TODO: many-to-many author(s)
 
 	public Book() {
-
 	}
 
-	public Book(Long id, Long isbn, String bookTitle, String author, String publicationCountry,
-	        Integer publicationYear) {
+	public Book(Long id, Long isbn, String bookTitle, String publicationCountry, Integer publicationYear, Integer genre,
+	        Integer author, String description) {
 		this.id = id;
 		this.isbn = isbn;
 		this.bookTitle = bookTitle;
-		this.author = author;
 		this.publicationCountry = publicationCountry;
 		this.publicationYear = publicationYear;
+		this.genre = genre;
+		this.author = author;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -62,14 +74,6 @@ public class Book {
 		this.bookTitle = bookTitle;
 	}
 
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String authorName) {
-		this.author = authorName;
-	}
-
 	public String getPublicationCountry() {
 		return publicationCountry;
 	}
@@ -86,10 +90,28 @@ public class Book {
 		this.publicationYear = publicationYear;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [id=" + id + ", isbn=" + isbn + ", bookTitle=" + bookTitle + ", author=" + author
-		        + ", publicationCountry=" + publicationCountry + ", publicationYear=" + publicationYear + "]";
+	public Integer getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Integer genre) {
+		this.genre = genre;
+	}
+
+	public Integer getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Integer author) {
+		this.author = author;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

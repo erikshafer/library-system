@@ -47,12 +47,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/console/**",
             "/signup",
             "/landing",
-            "/library",
             "/library/",
-            "/library/inventory",			// inventory (all)
-            "/library/inventory/id/**",		// individual view via id
-            "/library/authors",
-            "/library/authors/all"
+            "/library/**",
+            "/authors/**"
     };
 
     @Override
