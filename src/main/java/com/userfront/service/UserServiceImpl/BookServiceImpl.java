@@ -20,14 +20,12 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public Book findByTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.findByBookTitle(title);
 	}
 
 	@Override
 	public Book findByIsbn(long isbn) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.findByIsbn(isbn);
 	}
 	// TODO: Everything else
 

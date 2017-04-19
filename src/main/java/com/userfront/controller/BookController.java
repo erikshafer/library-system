@@ -38,5 +38,12 @@ public class BookController {
 		model.addAttribute("unit", bookService.findById(id));
 		return "itemView";
 	}
+	
+	// View all authors
+	@RequestMapping(value = "/authors", method = RequestMethod.GET)
+	public String viewAuthors(Model model) {
+		model.addAttribute("inventory", bookService.findAll());
+		return "inventory";
+	}
 
 }
