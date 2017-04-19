@@ -1,26 +1,10 @@
 package com.userfront.domain;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.userfront.domain.security.Authority;
-import com.userfront.domain.security.UserRole;
 
 @Entity
 public class Book {
@@ -39,6 +23,20 @@ public class Book {
 	private String publicationCountry;
 	@Column(name = "publication_year", nullable = true, unique = false)
 	private Integer publicationYear;
+
+	public Book() {
+
+	}
+
+	public Book(Long id, Long isbn, String bookTitle, String author, String publicationCountry,
+	        Integer publicationYear) {
+		this.id = id;
+		this.isbn = isbn;
+		this.bookTitle = bookTitle;
+		this.author = author;
+		this.publicationCountry = publicationCountry;
+		this.publicationYear = publicationYear;
+	}
 
 	public Long getId() {
 		return id;
@@ -86,6 +84,12 @@ public class Book {
 
 	public void setPublicationYear(Integer publicationYear) {
 		this.publicationYear = publicationYear;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", isbn=" + isbn + ", bookTitle=" + bookTitle + ", author=" + author
+		        + ", publicationCountry=" + publicationCountry + ", publicationYear=" + publicationYear + "]";
 	}
 
 }

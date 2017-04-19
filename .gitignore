@@ -2,5 +2,5 @@
 .project
 .settings/
 .gitignore
-target/
-/target
+target/**
+/target/**
