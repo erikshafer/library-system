@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.userfront.domain.Book;
 import com.userfront.service.AuthorService;
 import com.userfront.service.BookService;
+import com.userfront.service.GenreService;
 
 @Controller
 @RequestMapping("/books")
@@ -20,6 +21,9 @@ public class BookController {
 	
 	@Autowired
 	private AuthorService authorService;
+	
+	@Autowired
+	private GenreService genreService;
 	
 	// Re-route
 	@RequestMapping(value = "/")
@@ -49,6 +53,8 @@ public class BookController {
 	@RequestMapping(value = "/edit/{id}")
 	public String individualStockEdit(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("unit", bookService.findById(id));
+		model.addAttribute("authors", authorService.findAll());
+		model.addAttribute("genres", genreService.findAll());
 		return "editBook";
 	}
 

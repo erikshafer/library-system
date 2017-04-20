@@ -29,12 +29,22 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String home() {
-		return "redirect:/index";
+		return "redirect:/landing";
 	}
-	
+
 	@RequestMapping("/index")
-    public String index() {
-        return "index";
+    public String routeToLogin() {
+        return "redirect:/landing";
+    }
+	
+	@RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+	
+	@RequestMapping("/landing")
+    public String landing() {
+        return "landing";
     }
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)

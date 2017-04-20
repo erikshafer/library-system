@@ -4,124 +4,119 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Inventory</title>
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<!-- <link rel="stylesheet" href="css/site.css" /> -->
-
-<!-- Custom in-line CSS until I better fit this into my environment / container -->
-<!-- At the end of the day this is all for the mock-up until using UPRR standards -->
+<title>Alex Library Management System</title>
 <style>
-body {
-	font-style: normal;
-	font-variant-ligatures: normal;
-	font-variant-caps: normal;
-	font-variant-numeric: normal;
-	font-weight: normal;
-	font-stretch: normal;
-	font-size: 12px;
-	line-height: 1.231;
-	font-family: verdana, arial, helvetica, clean, sans-serif;
+div.container {
+	width: 100%;
+	border: 5px solid gray;
 }
 
-table {
-	display: table;
-	border-collapse: separate;
-	border-spacing: 0;
+header, footer {
+	padding: 1em;
+	color: white;
+	background-color: black;
+	clear: left;
+	text-align: center;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333333;
+}
+
+nav li {
+	float: left;
+}
+
+nav li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	background-color: #111111;
 }
 </style>
-
 </head>
 <body>
-	
-	<img class="img-responsive" src="/images/banner.png" alt="banner" />
-	<div class="container">
-
-		<!-- header -->
-
-		<div>
-			<a href="/signup"> <img src="/images/register-login.png"
-				alt="login" height="80" width="80" />
-			</a>
-			<h1>ALEX LIBRARY MANAGEMENT SYSTEM</h1>
-		</div>
-
-		<!-- navigation-->
-		<nav>
-			<ul>
-				<li><a href="#services">SERVICES</a></li>
-				<li><a href="#borrow&request">BORROW & REQUEST</a></li>
-				<li><a href="#research&teaching">RESEARCH & TEACHING </a></li>
-				<li><a href="#about">ABOUT</a></li>
-				<li><a href="#contact">CONTACT</a></li>
-			</ul>
-		</nav>
-
-		<!-- SEARCH -->
-		<div class="search">
-			<form action="/search/">
-				<div class="unosearch">
-					<input name="cx" type="hidden"
-						value="002646972799648025672:k_yu2m9ssto" /> <input name="cof"
-						type="hidden" value="FORID:11" /> <input name="ie" type="hidden"
-						value="UTF-8" /> <label class="hide" for="q">Search Terms</label>
-					<input id="q" name="q" placeholder="Search ALEX" type="search" /> <label
-						class="ALEX">Search Schools</label> <select>
-						<option value="0">Select...</option>
-						<option value="/booking/UNO" selected="selected">University
-							of Nebraska-Omaha</option>
-						<option value="/booking/UNL">University of
-							Nebraska-Lincoln</option>
-						<option value="/booking/UNK">University of
-							Nebraska-Kearney</option>
-					</select> <input type="submit" name="SubmitButton" value="Search" /> <a
-						href="https://www.google.com" target="_blank">Advanced search!</a>
-
-					<!-- 
-	<button type="button"
-	onclick="document.getElementById('demo').innerHTML = Date()" style="float:right">
-	Click me to display Date and Time.</button>
-	 -->
-
-				</div>
-			</form>
-		</div>
-
-		<div class="middle">
-			<img
-				src="http://www.library.illinois.edu/committee/rpc/images/rpcwordle.JPG"
-				alt="image" width="900" height="500" />
-		</div>
-
-
-		<!-- others -->
-		<div>
-			<div style="float: left; width: 330px; height: 200px;">
-				<p>
-					<a href="https://www.google.com"><img
-						src="http://minemotel.com/_images/request_room.png"
-						alt="Request room" width="100" height="100" /> </a>
-				</p>
-				<p>Request a Room!</p>
-			</div>
-			<div style="float: left; width: 330px; height: 200px;">
-				<p>
-					<a href="https://www.google.com"><img
-						src="https://img.clipartfox.com/db4918644a3a028f82192d4ccf56e606_images-for-upcoming-events-upcoming-event-clipart_1039-833.png"
-						alt="Events" width="100" height="100" /> </a>
-				</p>
-				<p>Special Events!</p>
-			</div>
-			<div style="float: left; width: 330px; height: 200px;">
-				<p>
-					<a href="https://www.google.com"><img
-						src="http://www.ece.umd.edu/~minwu/image/books_MSclip.gif"
-						alt="Coursematerial" width="100" height="100" /> </a>
-				</p>
-				<p>Course Material!</p>
-			</div>
-		</div>
+    <div class="container">
+        <!-- header -->
+        <header>
+            <a th:href="@{/login}"> <img src="https://0.s3.envato.com/files/166459326/register-login-add-on.png" alt="login"
+                style="float: right; width: 80px; height: 80px;" />
+            </a>
+            <h1>ALEX LIBRARY MANAGEMENT SYSTEM</h1>
+        </header>
+        <!-- navigation-->
+        <nav>
+            <ul>
+                <li><a th:href="@{/books/all}">SERVICES</a></li>
+                <li><a th:href="@{/books/all}">BORROW and REQUEST</a></li>
+                <li><a th:href="@{/books/all}">RESEARCH and TEACHING </a></li>
+                <li><a th:href="@{/books/all}">ABOUT</a></li>
+                <li><a th:href="@{/books/all}">CONTACT</a></li>
+            </ul>
+        </nav>
+        <!-- SEARCH -->
+        <div class="search">
+            <form action="/search/">
+                <div class="unosearch">
+                    <input name="cx" type="hidden" value="002646972799648025672:k_yu2m9ssto" /> <input name="cof" type="hidden" value="FORID:11" /> <input
+                        name="ie" type="hidden" value="UTF-8" /> <label class="hide" for="q">Search Terms</label> <input id="q" name="q"
+                        placeholder="Search ALEX" type="search" /> <label class="ALEX">Search Schools</label> <select>
+                        <option value="0">Select...</option>
+                        <option value="/booking/UNO" selected="selected">University of Nebraska-Omaha</option>
+                        <option value="/booking/UNL">University of Nebraska-Lincoln</option>
+                        <option value="/booking/UNK">University of Nebraska-Kearney</option>
+                    </select> <input type="submit" name="SubmitButton" value="Search" /> <a href="https://www.google.com" target="_blank">Advanced search!</a>
+                    <button type="button" onclick="document.getElementById('demo').innerHTML = Date()" style="float: right">Click me to display Date
+                        and Time.</button>
+                    <p id="demo"></p>
+                </div>
+            </form>
+        </div>
+        <div class="middle">
+            <img src="http://www.library.illinois.edu/committee/rpc/images/rpcwordle.JPG" alt="image" style="float: center; width: 900px; height: 500px;" />
+        </div>
+        <!-- others -->
+        <div>
+            <div style="float: left; width: 330px; height: 200px;">
+                <p>
+                    <a href="https://www.google.com"><img src="http://minemotel.com/_images/request_room.png" alt="Request room"
+                        style="width: 100px; height: 100px;" /> </a>
+                </p>
+                <p>Request a Room!</p>
+            </div>
+            <div style="float: left; width: 330px; height: 200px;">
+                <p>
+                    <a href="https://www.google.com"><img
+                        src="https://img.clipartfox.com/db4918644a3a028f82192d4ccf56e606_images-for-upcoming-events-upcoming-event-clipart_1039-833.png"
+                        alt="Events" style="width: 100px; height: 100px;" /> </a>
+                </p>
+                <p>Special Events!</p>
+            </div>
+            <div style="float: left; width: 330px; height: 200px;">
+                <p>
+                    <a href="https://www.google.com"><img src="http://www.ece.umd.edu/~minwu/image/books_MSclip.gif" alt="Coursematerial"
+                        style="width: 100px; height: 100px;" /> </a>
+                </p>
+                <p>Course Material!</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <small>Copyright &copy; ALEX LMS</small>
+        <ul>
+            <li class="footer-link"><a href="https://twitter.com/?lang=en" id="link-tw" target="_BLANK">Twitter</a></li>
+            <li class="footer-link"><a href="http://www.instagram.com/" id="link-ig" target="_BLANK">Instagram</a></li>
+            <li class="footer-link"><a href="http://www.facebook.com/" id="link-fb" target="_BLANK">Facebook</a></li>
+        </ul>
+    </footer>
 </body>
 </html>
