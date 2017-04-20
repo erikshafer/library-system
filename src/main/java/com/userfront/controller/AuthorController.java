@@ -13,9 +13,6 @@ import com.userfront.service.BookService;
 @Controller
 @RequestMapping("/authors")
 public class AuthorController {
-
-	@Autowired
-	private BookService bookService;
 	
 	@Autowired
 	private AuthorService authorService;

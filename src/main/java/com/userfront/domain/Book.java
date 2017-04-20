@@ -1,16 +1,10 @@
 package com.userfront.domain;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 
 @Entity
 public class Book {
@@ -24,13 +18,13 @@ public class Book {
 	@Column(name = "book_title", nullable = false, unique = false)
 	private String bookTitle;
 	@Column(name = "author_id")
-	private Integer author;
+	private Long author;
 	@Column(name = "publication_country", nullable = true, unique = false)
 	private String publicationCountry;
 	@Column(name = "publication_year", nullable = true, unique = false)
-	private Integer publicationYear;
+	private Long publicationYear;
 	@Column(name = "genre_id")
-	private Integer genre;
+	private Long genre;
 	@Column(name = "book_description")
 	private String description;
 	// TODO: many-to-many author(s)
@@ -38,8 +32,8 @@ public class Book {
 	public Book() {
 	}
 
-	public Book(Long id, Long isbn, String bookTitle, String publicationCountry, Integer publicationYear, Integer genre,
-	        Integer author, String description) {
+	public Book(Long id, Long isbn, String bookTitle, String publicationCountry, Long publicationYear, Long genre,
+			Long author, String description) {
 		this.id = id;
 		this.isbn = isbn;
 		this.bookTitle = bookTitle;
@@ -82,27 +76,27 @@ public class Book {
 		this.publicationCountry = publicationCountry;
 	}
 
-	public Integer getPublicationYear() {
+	public Long getPublicationYear() {
 		return publicationYear;
 	}
 
-	public void setPublicationYear(Integer publicationYear) {
+	public void setPublicationYear(Long publicationYear) {
 		this.publicationYear = publicationYear;
 	}
 
-	public Integer getGenre() {
+	public Long getGenre() {
 		return genre;
 	}
 
-	public void setGenre(Integer genre) {
+	public void setGenre(Long genre) {
 		this.genre = genre;
 	}
 
-	public Integer getAuthor() {
+	public Long getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(Integer author) {
+	public void setAuthor(Long author) {
 		this.author = author;
 	}
 

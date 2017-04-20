@@ -10,7 +10,7 @@ public interface BookService {
     Book findByIsbn(long isbn);
     Book findById(long id);
     List<Book> findAll();
-    List<Book> findByGenre(int genre);
+    List<Book> findByGenre(long genre);
     void save (Book book);
 
 //    boolean checkUserExists(String username, String email);

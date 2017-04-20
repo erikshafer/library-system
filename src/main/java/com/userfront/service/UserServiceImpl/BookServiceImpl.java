@@ -41,7 +41,7 @@ public class BookServiceImpl implements BookService {
 	}
 	
 	@Override
-	public List<Book> findByGenre(int genre) {
+	public List<Book> findByGenre(long genre) {
 		return bookDao.findByGenre(genre);
 	}
 

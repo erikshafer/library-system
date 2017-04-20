@@ -15,5 +15,5 @@ public interface BookDao extends CrudRepository<Book, Long> {
     Book findByAuthor(Long author);
     Book findByIsbn(Long isbn);
     List<Book> findAll();
-    List<Book> findByGenre(Integer genre);
+    List<Book> findByGenre(Long genre);
 }
