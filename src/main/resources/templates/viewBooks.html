@@ -1,39 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Inventory</title>
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<!-- <link rel="stylesheet" href="css/site.css" /> -->
-
-<!-- Custom in-line CSS until I better fit this into my environment / container -->
-<!-- At the end of the day this is all for the mock-up until using UPRR standards -->
-<style>
-body {
-    font-style: normal;
-    font-variant-ligatures: normal;
-    font-variant-caps: normal;
-    font-variant-numeric: normal;
-    font-weight: normal;
-    font-stretch: normal;
-    font-size: 12px;
-    line-height: 1.231;
-    font-family: verdana, arial, helvetica, clean, sans-serif;
-}
-table {
-	display: table;
-	border-collapse: separate;
-	border-spacing: 0;
-}
-</style>
-
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 	<div class="container">
 		<div class="page-header">
 			<h3>All Books</h3>
@@ -70,9 +38,9 @@ table {
 					<tr th:each="unit : ${inventory}" class="row">
 						<!-- <td class="col-lg-1 col-md-1 col-sm-1"><span th:text="${unit.id}"/></td> -->
 						<td class="col-lg-4 col-md-4 col-sm-4"><a th:href="@{/books/id/{id}(id=${unit.id})}"><span th:text="${unit.bookTitle}"/></a></td>
-						<td class="col-lg-4 col-md-4 col-sm-4"><a th:href="@{/authors/id/{id}(id=${unit.id})}"><span th:text="${unit.author}"/></a></td>
+						<td class="col-lg-4 col-md-4 col-sm-4"><a th:href="@{/authors/id/{id}(id=${unit.id})}"><span th:text="${unit.author.name}"/></a></td>
 						<!-- <td class="col-lg-3 col-md-3 col-sm-3"><span th:text="${unit.isbn}"/></td> -->
-						<td class="col-lg-2 col-md-2 col-sm-2"><a th:href="@{/books/genre/id/{id}(id=${unit.id})}"><span th:text="${unit.genre}"/></a></td>
+						<td class="col-lg-2 col-md-2 col-sm-2"><a th:href="@{/books/genre/id/{id}(id=${unit.id})}"><span th:text="${unit.genre.name}"/></a></td>
 						<!-- <td th:text="${unit.price}!=null? ${unit.price} : 'NO PRICE LISTED'" class="col-lg-3 col-md-3 col-sm-3">Stock Price</td> -->
 						<!-- CUSTOMERS -->
 						<!-- 
@@ -89,16 +57,10 @@ table {
 			</table>
 		</div>
 	</div>
-	<footer>
-		<div class="container">
-			<div class="row">
-				<input type="button" class="btn btn-primary" name="return" value="Return" onclick="window.location='/'" style="width: 100%;" />
-			</div>
+    <div class="container">
+		<div class="row">
+    		<input type="button" class="btn btn-primary" name="return" value="Return" onclick="window.location='/'" style="width: 100%;" />
 		</div>
-	</footer>
-	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </div>
 </body>
 </html>

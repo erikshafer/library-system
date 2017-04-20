@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -17,14 +19,22 @@ public class Book {
 	private Long isbn;
 	@Column(name = "book_title", nullable = false, unique = false)
 	private String bookTitle;
-	@Column(name = "author_id")
-	private Long author;
+	
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	private Author author;
+	
 	@Column(name = "publication_country", nullable = true, unique = false)
 	private String publicationCountry;
 	@Column(name = "publication_year", nullable = true, unique = false)
 	private Long publicationYear;
-	@Column(name = "genre_id")
-	private Long genre;
+	
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
+	private Genre genre;
+//	@Column(name = "genre_id")
+//	private Long genre;
+	
 	@Column(name = "book_description")
 	private String description;
 	// TODO: many-to-many author(s)
@@ -32,8 +42,8 @@ public class Book {
 	public Book() {
 	}
 
-	public Book(Long id, Long isbn, String bookTitle, String publicationCountry, Long publicationYear, Long genre,
-			Long author, String description) {
+	public Book(Long id, Long isbn, String bookTitle, String publicationCountry, Long publicationYear, Genre genre,
+			Author author, String description) {
 		this.id = id;
 		this.isbn = isbn;
 		this.bookTitle = bookTitle;
@@ -84,19 +94,19 @@ public class Book {
 		this.publicationYear = publicationYear;
 	}
 
-	public Long getGenre() {
+	public Genre getGenre() {
 		return genre;
 	}
 
-	public void setGenre(Long genre) {
+	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
 
-	public Long getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(Long author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 

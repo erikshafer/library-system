@@ -1,45 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Inventory</title>
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<!-- <link rel="stylesheet" href="css/site.css" /> -->
-
-<!-- Custom in-line CSS until I better fit this into my environment / container -->
-<!-- At the end of the day this is all for the mock-up until using UPRR standards -->
-<style>
-body {
-	font-style: normal;
-	font-variant-ligatures: normal;
-	font-variant-caps: normal;
-	font-variant-numeric: normal;
-	font-weight: normal;
-	font-stretch: normal;
-	font-size: 12px;
-	line-height: 1.231;
-	font-family: verdana, arial, helvetica, clean, sans-serif;
-}
-
-table {
-	display: table;
-	border-collapse: separate;
-	border-spacing: 0;
-}
-</style>
-
-</head>
-<body>
-	<div class="container divBookDetails">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<div class="container">
 		<div class="row">
             <div class="col-xs-12 col-md-8">
                 <div class="col-xs-12">
-                    <h4 class="display-4"><a th:href="@{/authors/id/{id}(id=${unit.author})}"><small><span th:text="${unit.author}" /></small></a></h4>
+                    <h5 class="display-5"><a th:href="@{/authors/id/{id}(id=${unit.author})}"><span th:text="${unit.author.name}" /></a></h5>
                 </div>
     			<div class="col-xs-12">
     				<h3 class="display-3"><strong><span th:text="${unit.bookTitle}" /></strong></h3>
@@ -57,11 +24,11 @@ table {
                 </div>
             </div>
 			<div class="col-xs-12 col-md-4 align-text-bottom align-bottom">
-                <div class="col-xs-12" style="height:30px;">
-                    <input type="button" class="btn btn-primary" name="return" value="Check Out" onclick="window.location='/books/all'" style="width: 100%;" />
+                <div class="col-xs-12">
+                    <input type="button" class="btn btn-primary btn-lg btn-success" name="return" value="Check Out" onclick="window.location='/books/all'" style="width: 100%;" />
                 </div>
-                <div class="col-xs-12" style="height:30px;">
-                    <input type="button" class="btn btn-primary" name="return" value="Wish list" onclick="window.location='/books/all'" style="width: 100%;" />
+                <div class="col-xs-12">
+                    <input type="button" class="btn btn-info btn-lg btn-block" name="return" value="Wish list" onclick="window.location='/books/all'" style="width: 100%;" />
                 </div>
 			</div>
 		</div>
@@ -126,12 +93,10 @@ table {
 			</div>
 		</div>
 	</div>
-	<footer>
-		<div class="container">
-			<div class="row">
-				<input type="button" class="btn btn-primary" name="return" value="Return" onclick="window.location='/books/all'" style="width: 100%;" />
-			</div>
+    <div class="container">
+		<div class="row">
+    		<input type="button" class="btn btn-primary" name="return" value="Return" onclick="window.location='/'" style="width: 100%;" />
 		</div>
-	</footer>
+    </div>
 </body>
 </html>

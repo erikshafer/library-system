@@ -40,6 +40,7 @@ public class BookController {
 	public String viewAllBooks(Model model) {
 		model.addAttribute("inventory", bookService.findAll());
 		model.addAttribute("authors", authorService.findAll());
+		model.addAttribute("genres", genreService.findAll());
 		return "viewBooks";
 	}
 	
