@@ -3,11 +3,15 @@ package com.userfront.service.UserServiceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.userfront.dao.CountryDao;
 import com.userfront.domain.Country;
 import com.userfront.service.CountryService;
 
+@Service
+@Transactional
 public class CountryServiceImpl implements CountryService {
 
 	@Autowired

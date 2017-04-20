@@ -3,6 +3,7 @@ package com.userfront.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.userfront.domain.Book;
 import com.userfront.service.AuthorService;
 import com.userfront.service.BookService;
+import com.userfront.service.CountryService;
 import com.userfront.service.GenreService;
 
 @Controller
@@ -24,6 +26,9 @@ public class BookController {
 	
 	@Autowired
 	private GenreService genreService;
+	
+	@Autowired
+	private CountryService countryService;
 	
 	// Re-route
 	@RequestMapping(value = "/")
@@ -55,6 +60,7 @@ public class BookController {
 		model.addAttribute("unit", bookService.findById(id));
 		model.addAttribute("authors", authorService.findAll());
 		model.addAttribute("genres", genreService.findAll());
+		model.addAttribute("countries", countryService.findAll());
 		return "editBook";
 	}
 
@@ -63,6 +69,17 @@ public class BookController {
 	public String saveEdit(Book book) {
 		bookService.save(book);
 		return "redirect:/books/all";
+	}
+	
+	// New book
+	@RequestMapping(value = "/add")
+	public String addNewBook(Model model) {
+		Book newBook = new Book();
+		model.addAttribute("unit", newBook);
+		model.addAttribute("authors", authorService.findAll());
+		model.addAttribute("genres", genreService.findAll());
+		model.addAttribute("countries", countryService.findAll());
+		return "editBook";
 	}
 
 	// Save

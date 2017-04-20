@@ -10,7 +10,7 @@
     		</div>
 		</div>
 		<div class="row">
-			<form th:object="${unit}" th:action="@{../saveEdit}" action="#" method="post">
+			<form th:object="${unit}" th:action="@{/books/save}" action="#" method="post">
 			<input type="hidden" name="id" th:value="${unit.id}" />
             <div class="row justify-content-md-center">
                 <div class="form-group col-xs-12 col-md-6">
@@ -30,7 +30,7 @@
             </div>
             <div class="row justify-content-md-center">
                 <div class="form-group col-xs-12 col-md-6">
-                    <div class="col-xs-12 col-md-3"><label for="author" class="cols-sm-3 control-label">Author ID</label></div>
+                    <div class="col-xs-12 col-md-3"><label for="author" class="cols-sm-3 control-label">Author</label></div>
                     <div class="col-xs-12 col-md-9 input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                         <select class="form-control" th:field="*{author}" id="authorDrop" name="authorDrop">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="form-group col-xs-12 col-md-6">
-                    <div class="col-xs-12 col-md-3"><label for="genre" class="cols-sm-3 control-label">Genre ID</label></div>
+                    <div class="col-xs-12 col-md-3"><label for="genre" class="cols-sm-3 control-label">Genre</label></div>
                     <div class="col-xs-12 col-md-9 input-group">
                         <span class="input-group-addon"><i class="fa fa-bookmark fa" aria-hidden="true"></i></span>
                         <select class="form-control" th:field="*{genre}" id="genreDrop" name="genreDrop">
@@ -54,10 +54,14 @@
             </div>
             <div class="row justify-content-md-center">
                 <div class="form-group col-xs-12 col-md-6">
-                    <div class="col-xs-12 col-md-3"><label for="country" class="cols-sm-3 control-label">Publication Country</label></div>
+                    <div class="col-xs-12 col-md-3"><label for="country" class="cols-sm-3 control-label">Country of Publication</label></div>
                     <div class="col-xs-12 col-md-9 input-group">
                         <span class="input-group-addon"><i class="fa fa-globe fa" aria-hidden="true"></i></span>
-                        <input type="text" th:field="*{publicationCountry}" class="form-control" required="required" />
+                        <select class="form-control" th:field="*{publicationCountry}" id="countryDrop" name="countryDrop">
+                            <option th:each="country : ${countries}"
+                                    th:value="${country.id}"
+                                    th:text="${country.name}"></option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group col-xs-12 col-md-6">

@@ -39,6 +39,7 @@ public class User implements UserDetails{
     private String phone;
 
     private boolean enabled=true;
+   
 
     @OneToOne
     private PrimaryAccount primaryAccount;
@@ -46,6 +47,10 @@ public class User implements UserDetails{
     @OneToOne
     private SavingsAccount savingsAccount;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Checkout> checkoutList;
+    
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Appointment> appointmentList;
@@ -137,6 +142,8 @@ public class User implements UserDetails{
         this.password = password;
     }
 
+    
+    
     public PrimaryAccount getPrimaryAccount() {
         return primaryAccount;
     }
@@ -153,7 +160,7 @@ public class User implements UserDetails{
         this.savingsAccount = savingsAccount;
     }
 
-    public void setEnabled(boolean enabled) {
+	public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
