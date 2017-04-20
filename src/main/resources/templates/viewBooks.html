@@ -54,10 +54,10 @@ table {
 				<tbody>
 					<tr th:each="unit : ${inventory}" class="row">
 						<!-- <td class="col-lg-1 col-md-1 col-sm-1"><span th:text="${unit.id}"/></td> -->
-						<td class="col-lg-4 col-md-4 col-sm-4"><a th:href="@{/library/inventory/id/{id}(id=${unit.id})}"><span th:text="${unit.bookTitle}"/></a></td>
+						<td class="col-lg-4 col-md-4 col-sm-4"><a th:href="@{/books/id/{id}(id=${unit.id})}"><span th:text="${unit.bookTitle}"/></a></td>
 						<td class="col-lg-4 col-md-4 col-sm-4"><a th:href="@{/authors/id/{id}(id=${unit.id})}"><span th:text="${unit.author}"/></a></td>
 						<!-- <td class="col-lg-3 col-md-3 col-sm-3"><span th:text="${unit.isbn}"/></td> -->
-						<td class="col-lg-2 col-md-2 col-sm-2"><a th:href="@{/library/genre/id/{id}(id=${unit.id})}"><span th:text="${unit.genre}"/></a></td>
+						<td class="col-lg-2 col-md-2 col-sm-2"><a th:href="@{/books/genre/id/{id}(id=${unit.id})}"><span th:text="${unit.genre}"/></a></td>
 						<!-- <td th:text="${unit.price}!=null? ${unit.price} : 'NO PRICE LISTED'" class="col-lg-3 col-md-3 col-sm-3">Stock Price</td> -->
 						<!-- CUSTOMERS -->
 						<!-- 
@@ -67,17 +67,17 @@ table {
 							</span>
 						</td>
 						 -->
-						<td class="col-lg-1 col-md-1 col-sm-1"><a th:href="@{/library/edit/{id}(id=${unit.id})}"><span class="label label-default btn-block lead" >edit</span></a></td>
-						<td class="col-lg-1 col-md-1 col-sm-1"><a th:href="@{/library/delete/{id}(id=${unit.id})}"><span class="label label-danger btn-block lead" >delete</span></a></td>
+						<td class="col-lg-1 col-md-1 col-sm-1"><a th:href="@{/books/edit/{id}(id=${unit.id})}"><span class="label label-default btn-block lead" >edit</span></a></td>
+						<td class="col-lg-1 col-md-1 col-sm-1"><a th:href="@{/books/delete/{id}(id=${unit.id})}"><span class="label label-danger btn-block lead" >delete</span></a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<footer class="footer">
+	<footer>
 		<div class="container">
-			<div class="col-md-md-12">
-				<p class="text-muted">Footer</p>
+			<div class="row">
+				<input type="button" class="btn btn-primary" name="return" value="Return" onclick="window.location='/'" style="width: 100%;" />
 			</div>
 		</div>
 	</footer>

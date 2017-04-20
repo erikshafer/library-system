@@ -30,7 +30,7 @@ public class AuthorController {
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String viewAuthorAll(Model model) {
 		model.addAttribute("authors", authorService.findAll());
-		return "authors";
+		return "viewAuthors";
 	}
 
 	// Single author view
