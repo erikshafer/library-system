@@ -24,8 +24,11 @@ public class Checkout {
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@Column(name = "checkout_date_borrowed")
 	private Date dateBorrowed;
+	@Column(name = "checkout_date_due")
 	private Date dateDue;
+	@Column(name = "checkout_date_returned")
 	private Date dateReturned;
 
 	private boolean checkedOut;

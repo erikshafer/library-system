@@ -35,13 +35,13 @@
                 <div class="panel-heading">Additional Information</div>
                 <div class="panel-body">
                     <div class="gutter-10 col-xs-12 col-md-4 col-lg-4">
-                        <p class="text-left text-primary">Country of Origin: <span th:text="${unit.publicationCountry}" /></p>
+                        <p class="text-left text-primary"><strong>Country of Origin:</strong> <span th:text="${unit.publicationCountry}" /></p>
                     </div>
                     <div class="gutter-10 col-xs-12 col-md-3 col-lg-3">
-                        <p class="text-left text-primary">Published: <span th:text="${unit.publicationYear}" /></p>
+                        <p class="text-left text-primary"><strong>Published:</strong> <span th:text="${unit.publicationYear}" /></p>
                     </div>
-                    <div class="gutter-10 col-xs-12 col-md-5 col-lg-5">
-                            <p class="text-left text-primary">ISBN-13: <span th:text="${unit.isbn}" /></p>
+                    <div class="gutter-10 col-xs-12 col-md-3 col-lg-5">
+                            <p class="text-left text-primary"><strong>ISBN-13:</strong> <span th:text="${unit.isbn}" /></p>
                     </div>
                 </div>
             </div>
@@ -51,11 +51,21 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Availability</div>
                 <div class="panel-body">
-                    <div class="gutter-5 col-xs-12 col-md-6 col-lg-6">
-                        <input type="button" class="btn btn-primary btn-success" name="return" value="Check Out" onclick="window.location='/books/all'" style="width: 100%;" />
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <a th:href="@{/checkout/{id}(id=${unit.id})}"><span class="btn btn-success btn-block col-xs-12 btn-lg">Check Out</span></a>
+                        <!-- <input type="button" class="btn btn-primary btn-success" name="return" value="Check Out" th:onclick="window.location='@{/checkout/{id}(id=${unit.id})}'" style="width: 100%;" /> -->
                     </div>
-                    <div class="gutter-5 col-xs-12 col-md-6 col-lg-6">
-                        <input type="button" class="btn btn-info btn-block" name="return" value="Wish list" onclick="window.location='/books/all'" style="width: 100%;" />
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <a th:href="@{/checkout/{id}(id=${unit.id})}"><span class="btn btn-info btn-block col-xs-12 btn-lg">Wish List</span></a>
+                        <!-- <input type="button" class="btn btn-info btn-block" name="return" value="Wish list" onclick="window.location='/books/all'" style="width: 100%;" /> -->
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <a th:href="@{/books/edit/{id}(id=${unit.id})}"><span class="btn btn-warning btn-block col-xs-12 btn-lg">Edit Book</span></a>
+                        <!-- <input type="button" class="btn btn-info btn-block" name="return" value="Wish list" onclick="window.location='/books/all'" style="width: 100%;" /> -->
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-3">
+                        <a th:href="@{/books/edit/{id}(id=${unit.id})}"><span class="btn btn-danger btn-block col-xs-12 btn-lg">Delete Book</span></a>
+                        <!-- <input type="button" class="btn btn-info btn-block" name="return" value="Wish list" onclick="window.location='/books/all'" style="width: 100%;" /> -->
                     </div>
                 </div>
             </div>
