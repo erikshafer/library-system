@@ -73,8 +73,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-block ">Change Settings
-                    </button>
+                    <button type="submit" class="btn btn-primary btn-block ">Change Settings</button>
                 </div>
 
             </form>
@@ -87,12 +86,12 @@
                 </div>
                 <table class="responstable">
                     <tr>
-                        <th>Primary Account Number</th>
-                        <th>Balance</th>
+                        <th>Primary Account Number</th> <!-- FIX THIS WITH BOOKS -->
+                        <th>Balance</th> <!-- FIX THIS WITH BOOKS -->
                     </tr>
 
                     <tr>
-                        <td data-th-text="${user.primaryAccount.accountNumber}">...</td>
+                        <td>...</td> <!-- FIX THIS WITH BOOKS -->
                         <td>$0.00</td>	<!-- FIX THIS WITH BOOKS -->
                     </tr>
                 </table>
@@ -105,6 +104,16 @@
                     <hr/>
                 </div>
                 <table class="responstable">
+                    <tr class="row">		<!-- TODO: FIX Bootstrap -->
+                        <th class="col-mid-3">Book ID (ISBN)</th>
+                        <th class="col-mid-5">Book Name</th>
+                        <th class="col-mid-4">Author Name</th>
+                    </tr>
+                    <tr class="row">		<!-- TODO: FIX Bootstrap -->
+                        <td class="col-mid-3">123456789</td>
+                        <td class="col-mid-5">Lord of the Rings</td>	<!-- FIX THIS WITH BOOKS -->
+                        <td class="col-mid-4">JRR Tolkien</td>
+                    </tr>
                     <tr class="row">		<!-- TODO: FIX Bootstrap -->
                         <th class="col-mid-3">Book ID (ISBN)</th>
                         <th class="col-mid-5">Book Name</th>
