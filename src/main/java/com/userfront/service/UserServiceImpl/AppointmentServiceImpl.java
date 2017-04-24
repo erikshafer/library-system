@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.userfront.dao.AppointmentDao;
 import com.userfront.domain.Appointment;
+import com.userfront.domain.User;
 import com.userfront.service.AppointmentService;
 
 @Service
@@ -32,4 +33,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setConfirmed(true);
         appointmentDao.save(appointment);
     }
+
+	@Override
+	public List<Appointment> findByUser(User user) {
+		return appointmentDao.findByUser(user);
+	}
 }

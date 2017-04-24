@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.userfront.dao.RoleDao;
 import com.userfront.domain.User;
 import com.userfront.domain.security.UserRole;
+import com.userfront.service.AppointmentService;
 import com.userfront.service.BookService;
 import com.userfront.service.CheckoutService;
 import com.userfront.service.UserService;
@@ -32,6 +33,9 @@ public class HomeController {
 
 	@Autowired
 	private RoleDao roleDao;
+	
+	@Autowired
+	private AppointmentService appointmentService;
 
 	@RequestMapping("/")
 	public String home() {
@@ -87,6 +91,7 @@ public class HomeController {
 		
         model.addAttribute("books", bookService.findAll());
         model.addAttribute("checkedout", checkoutService.findByUser(user));
+        model.addAttribute("appointments", appointmentService.findByUser(user));
         
 		// PrimaryAccount primaryAccount = user.getPrimaryAccount();
 		// SavingsAccount savingsAccount = user.getSavingsAccount();
