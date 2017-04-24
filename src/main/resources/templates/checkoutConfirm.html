@@ -8,34 +8,24 @@
         <div class="col-xs-12">
             <h2>Confirm Checkout</h2>
             <form th:object="${checkout}" th:action="@{/checkout/save}" action="#" method="post">
-            <!-- <form th:action="@{/checkout/save}" method="post" id="appointmentForm">  -->
                 <input type="hidden" name="checkoutId" th:value="${checkout.checkoutId}"/>
                 <input type="hidden" name="bookId" th:value="${book.id}" />
-                <!-- <input type="hidden" name="userId" th:value="${user.userId}" />  -->
-                <!-- AUTO <input type="hidden" name="checkedOut" th:value="true" /> -->
                 
                 <div class="form-group">
                     <label for="bookTitle">Book's title: </label><span th:text="${book.bookTitle}" /> 
                     <label for="dateDue">Date Returning: </label>
                     <input type="date" th:value="${checkout.dateDue}" th:field="${checkout.dateDue}" id="dateDue"/>
-                    
                 </div>
 
-                <!-- 
-                <input type="hidden"
-                       name="${_csrf.parameterName}"
-                       value="${_csrf.token}"/>
-                 -->
 
                 <input type="submit" class="btn btn-primary btn-lg btn-success" value="Confirm Checkout" style="width: 100%;" />
-                <!-- <a class="btn btn-primary" id="submitCheckout" type="submit">Confirm Checkout</a> -->
             </form>
         </div>
     </div>
     <br/>
 </div>
 
-<div th:replace="common/header :: body-bottom-scripts"/>
+<div th:replace="common/header :: body-bottom-scripts" />
 
 </body>
 </html>
