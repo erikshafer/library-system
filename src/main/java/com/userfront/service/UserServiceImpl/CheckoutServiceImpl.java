@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.userfront.dao.checkoutDao;
 import com.userfront.domain.Checkout;
+import com.userfront.domain.User;
+import com.userfront.service.CheckoutService;
 
 @Service
-public class CheckoutServiceImpl {
+public class CheckoutServiceImpl implements CheckoutService {
 
 	@Autowired
 	private checkoutDao checkoutDao;
@@ -30,6 +32,17 @@ public class CheckoutServiceImpl {
 		Checkout checkout = findCheckout(id);
 		checkout.setCheckedOut(true);
 		checkoutDao.save(checkout);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Checkout> findByBookId(Long bookId) {
+		return (List<Checkout>) checkoutDao.findByBookId(bookId);
+	}
+
+	@Override
+	public List<Checkout> findByUser(User user) {
+		return checkoutDao.findByUser(user);
 	}
 
 }

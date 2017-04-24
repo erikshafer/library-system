@@ -13,8 +13,6 @@ public interface CheckoutService {
     List<Checkout> findByBookId(Long bookId);
     
     List<Checkout> findByUser(User user);
-    
-    List<Checkout> findByUserId(Long userId);
 
     Checkout findCheckout(Long id);
 

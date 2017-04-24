@@ -1,13 +1,13 @@
 body {
-	background-color: transparent;
+	background-color: #F5F5F5;
 }
 
 html {
-	background: url("/images/bg.png") no-repeat center center fixed;
+	/* background: url("/images/bg.png") no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;
+	background-size: cover; */
 }
 
 .form-basic {
@@ -285,4 +285,64 @@ hr {
 	height: 1px;
 	background: #333;
 	background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.panel-body {
+	background:#FFFFFF;
+}
+
+.panel-body-gray {
+	background:#EDEDED;
+}
+
+/* 5px gutter */
+.gutter-5 {
+  margin-bottom: -5px;
+}
+
+/* 10px gutter */
+.gutter-10 {
+  margin-bottom: -10px;
+}
+
+/* 15px gutter */
+.gutter-15 {
+  margin-bottom: -15px;
+}
+
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Show less';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 .5em;
+  color: #666;
+  font-size: .9em;
+  line-height: 2;
+  border: 1px solid #ddd;
+  border-radius: .4em;
+  width: 100%;
 }

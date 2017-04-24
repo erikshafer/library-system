@@ -17,16 +17,19 @@ public class Author {
 	private String name;
 	@Column(name = "author_country")
 	private Long country;
-	
+	@Column(name = "author_description")
+	private String description;
+
 	// Blank needed for Hibernate, apparently.
 	public Author() {
-		
+
 	}
 
-	public Author(Long id, String name, Long country) {
+	public Author(Long id, String name, Long country, String description) {
 		this.id = id;
 		this.name = name;
 		this.country = country;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -51,6 +54,14 @@ public class Author {
 
 	public void setCountry(Long country) {
 		this.country = country;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.userfront.domain.Book;
+import com.userfront.domain.Checkout;
 import com.userfront.service.AuthorService;
 import com.userfront.service.BookService;
 import com.userfront.service.CountryService;
@@ -83,11 +84,12 @@ public class BookController {
 	}
 
 	// Save
-	@RequestMapping(value = "save", method = RequestMethod.POST)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Book book) {
 		bookService.save(book);
 		return "redirect:/books/all";
 	}
+	
 	
 	// View all books in a specific genre (id)
 	@RequestMapping(value = "/genre/id/{id}", method = RequestMethod.GET)

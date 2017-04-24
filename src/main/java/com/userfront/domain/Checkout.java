@@ -1,6 +1,6 @@
 package com.userfront.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Checkout {
@@ -24,8 +26,11 @@ public class Checkout {
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateBorrowed;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateDue;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateReturned;
 
 	private boolean checkedOut;
