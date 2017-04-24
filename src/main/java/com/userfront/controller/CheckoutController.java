@@ -38,15 +38,15 @@ public class CheckoutController {
     	Checkout checkout = new Checkout();
     	model.addAttribute("checkout", checkout);
     	model.addAttribute("book", bookService.findById(id));
-        model.addAttribute("date", "");
+        model.addAttribute("dateString", "");
 
         return "checkoutConfirm";
     }
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public String createCheckoutPost(@ModelAttribute("checkout") Checkout checkout, @ModelAttribute("date") String date, Model model, Principal principal) throws ParseException {
+    public String createCheckoutPost(@ModelAttribute("checkout") Checkout checkout, @ModelAttribute("dateString") String date, Model model, Principal principal) throws ParseException {
 
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         Date d1 = format1.parse( date );
         checkout.setDateDue(d1);
 
