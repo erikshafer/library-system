@@ -89,14 +89,6 @@ public class BookController {
 		bookService.save(book);
 		return "redirect:/books/all";
 	}
-	
-	
-	// View all books in a specific genre (id)
-	@RequestMapping(value = "/genre/id/{id}", method = RequestMethod.GET)
-	public String viewGenres(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("inventory", bookService.findByGenre(id));
-//		model.addAttribute("authors", authorService.findAll());
-		return "viewBooks";
-	}
+
 	
 }

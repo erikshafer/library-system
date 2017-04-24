@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.userfront.domain.Author;
 import com.userfront.domain.Book;
+import com.userfront.domain.Genre;
 
 // Spring Boot automatically will create methods in the container that
 // are based off of the `findBy` prefix.
@@ -12,8 +14,8 @@ import com.userfront.domain.Book;
 public interface BookDao extends CrudRepository<Book, Long> {
 	Book findById(Long id);
 	Book findByBookTitle(String bookTitle);
-    Book findByAuthor(Long author);
+    Book findByAuthor(Author author);
     Book findByIsbn(Long isbn);
     List<Book> findAll();
-    List<Book> findByGenre(Long genre);
+    List<Book> findByGenre(Genre genre);
 }

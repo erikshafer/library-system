@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.userfront.domain.User;
+import com.userfront.service.BookService;
+import com.userfront.service.CheckoutService;
 import com.userfront.service.UserService;
 
 @Controller
@@ -18,12 +20,20 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    
+	@Autowired
+	private BookService bookService;
+	
+	@Autowired
+	private CheckoutService checkoutService;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String profile(Principal principal, Model model) {
         User user = userService.findByUsername(principal.getName());
 
         model.addAttribute("user", user);
+        model.addAttribute("books", bookService.findAll());
+        model.addAttribute("checkedout", checkoutService.findByUser(user));
 
         return "profile";
     }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.userfront.dao.BookDao;
 import com.userfront.domain.Book;
+import com.userfront.domain.Genre;
 import com.userfront.service.BookService;
 
 @Service
@@ -39,16 +40,17 @@ public class BookServiceImpl implements BookService {
 		// TODO Auto-generated method stub
 		return bookDao.findAll();
 	}
-	
-	@Override
-	public List<Book> findByGenre(long genre) {
-		return bookDao.findByGenre(genre);
-	}
+
 
 	@Override
 	public void save(Book book) {
 		bookDao.save(book);
 		
+	}
+
+	@Override
+	public List<Book> findByGenre(Genre genre) {
+		return bookDao.findByGenre(genre);
 	}
 
 }

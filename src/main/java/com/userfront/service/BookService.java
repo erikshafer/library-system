@@ -3,6 +3,7 @@ package com.userfront.service;
 import java.util.List;
 
 import com.userfront.domain.Book;
+import com.userfront.domain.Genre;
 
 // TODO: fix this for Book
 public interface BookService {
@@ -10,7 +11,7 @@ public interface BookService {
     Book findByIsbn(long isbn);
     Book findById(long id);
     List<Book> findAll();
-    List<Book> findByGenre(long genre);
+    List<Book> findByGenre(Genre genre);
     void save (Book book);
 
 //    boolean checkUserExists(String username, String email);

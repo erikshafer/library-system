@@ -17,8 +17,11 @@ public class Checkout {
 	@Column(name = "checkout_id")
 	private Long checkoutId;
 
-	@Column(name = "book_id")
-	private Long bookId;
+//	@Column(name = "book_id")
+//	private Long bookId;
+	@ManyToOne
+	@JoinColumn(name = "book_id")
+	private Book book;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -37,10 +40,10 @@ public class Checkout {
 
 	}
 
-	public Checkout(Long checkoutId, Long bookId, User user, Date dateBorrowed, Date dateDue, Date dateReturned,
+	public Checkout(Long checkoutId, Book book, User user, Date dateBorrowed, Date dateDue, Date dateReturned,
 	        boolean checkedOut) {
 		this.checkoutId = checkoutId;
-		this.bookId = bookId;
+		this.book = book;
 		this.user = user;
 		this.dateBorrowed = dateBorrowed;
 		this.dateDue = dateDue;
@@ -64,12 +67,12 @@ public class Checkout {
 		this.checkoutId = checkoutId;
 	}
 
-	public Long getBookId() {
-		return bookId;
+	public Book getBook() {
+		return book;
 	}
 
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	public User getUser() {
@@ -114,7 +117,7 @@ public class Checkout {
 
 	@Override
 	public String toString() {
-		return "Checkout [checkoutId=" + checkoutId + ", bookId=" + bookId + ", user=" + user + ", dateBorrowed="
+		return "Checkout [checkoutId=" + checkoutId + ", book=" + book.getBookTitle() + ", user=" + user + ", dateBorrowed="
 		        + dateBorrowed + ", dateDue=" + dateDue + ", dateReturned=" + dateReturned + "]";
 	}
 

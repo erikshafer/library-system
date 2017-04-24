@@ -13,9 +13,10 @@ public interface checkoutDao extends CrudRepository<Checkout, Long>{
 
 	List<Checkout> findAll();
 	List<Checkout> findByUser(User user);
-	Checkout findByBookId(Long id);
+	List<Checkout> findByBook(Book book);
 	List<Checkout> findByDateBorrowed(Date date);
 	List<Checkout> findByDateDue(Date date);
 	List<Checkout> findByDateReturned(Date date);
+	List<Checkout> findByCheckedOut(Boolean out);
 
 }

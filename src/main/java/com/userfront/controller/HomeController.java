@@ -14,13 +14,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.userfront.dao.RoleDao;
 import com.userfront.domain.User;
 import com.userfront.domain.security.UserRole;
+import com.userfront.service.BookService;
+import com.userfront.service.CheckoutService;
 import com.userfront.service.UserService;
 
 @Controller
 public class HomeController {
 
+    @Autowired
+    private UserService userService;
+    
 	@Autowired
-	private UserService userService;
+	private BookService bookService;
+	
+	@Autowired
+	private CheckoutService checkoutService;
 
 	@Autowired
 	private RoleDao roleDao;
@@ -76,6 +84,10 @@ public class HomeController {
 	@RequestMapping("/userFront")
 	public String userFront(Principal principal, Model model) {
 		User user = userService.findByUsername(principal.getName());
+		
+        model.addAttribute("books", bookService.findAll());
+        model.addAttribute("checkedout", checkoutService.findByUser(user));
+        
 		// PrimaryAccount primaryAccount = user.getPrimaryAccount();
 		// SavingsAccount savingsAccount = user.getSavingsAccount();
 		//
