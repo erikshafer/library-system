@@ -2,6 +2,7 @@ package com.userfront.service;
 
 import java.util.List;
 
+import com.userfront.domain.Author;
 import com.userfront.domain.Book;
 import com.userfront.domain.Genre;
 
@@ -12,6 +13,8 @@ public interface BookService {
     Book findById(long id);
     List<Book> findAll();
     List<Book> findByGenre(Genre genre);
+    List<Book> findByAuthor(Author author);
+    List<Book> findByInStock(boolean available);
     void save (Book book);
 
 //    boolean checkUserExists(String username, String email);

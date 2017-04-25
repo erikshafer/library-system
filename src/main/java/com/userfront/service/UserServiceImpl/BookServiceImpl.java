@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.userfront.dao.BookDao;
+import com.userfront.domain.Author;
 import com.userfront.domain.Book;
 import com.userfront.domain.Genre;
 import com.userfront.service.BookService;
@@ -18,7 +19,7 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	private BookDao bookDao;
-	
+
 	@Override
 	public Book findByTitle(String title) {
 		return bookDao.findByBookTitle(title);
@@ -28,7 +29,6 @@ public class BookServiceImpl implements BookService {
 	public Book findByIsbn(long isbn) {
 		return bookDao.findByIsbn(isbn);
 	}
-	// TODO: Everything else
 
 	@Override
 	public Book findById(long id) {
@@ -37,20 +37,28 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public List<Book> findAll() {
-		// TODO Auto-generated method stub
 		return bookDao.findAll();
 	}
-
 
 	@Override
 	public void save(Book book) {
 		bookDao.save(book);
-		
+
 	}
 
 	@Override
 	public List<Book> findByGenre(Genre genre) {
 		return bookDao.findByGenre(genre);
+	}
+
+	@Override
+	public List<Book> findByAuthor(Author author) {
+		return bookDao.findByAuthor(author);
+	}
+
+	@Override
+	public List<Book> findByInStock(boolean available) {
+		return bookDao.findByInStock(available);
 	}
 
 }

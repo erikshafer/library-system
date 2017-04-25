@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head th:fragment="common-header">
 
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <title>User Front</title>
+    <meta name="description" content="Alex Library Management System for Introduction to Software Engineering (CSCI-4830) at UNOmaha."/>
+    <meta name="author" content="Erik Shafer"/>
+    <title>Alex LMS</title>
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -112,7 +114,7 @@
     		<div class="panel-group">
     			<div class="panel panel-default">
     				<div class="panel-body" style="max-height:40px;margin-left:auto; margin-right:auto;">
-    					<p class="text-muted text-center">Team Stark : CSCI-4830</p>
+    					<p class="text-muted text-center"><small>Team Stark : CSCI-4830</small></p>
     				</div>
     			</div>
     		</div>

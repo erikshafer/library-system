@@ -1,5 +1,9 @@
 package com.userfront.service.UserServiceImpl;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +37,20 @@ public class CheckoutServiceImpl implements CheckoutService {
 		Checkout checkout = findCheckout(id);
 		checkout.setCheckedOut(true);
 		checkoutDao.save(checkout);
+	}
+	
+	public List<Checkout> findUserPastDue(User user) {
+		List<Checkout> pastDue = new ArrayList<>();
+		LocalDate localDate = LocalDate.now();
+		Date today = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		for (Checkout currCheckout : findByUser(user)) {
+			if (currCheckout.getDateDue().before(today)); {
+				pastDue.add(currCheckout);
+			}
+		}
+		
+		return pastDue;
 	}
 
 	@Override

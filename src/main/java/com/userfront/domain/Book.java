@@ -1,5 +1,7 @@
 package com.userfront.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,24 +19,28 @@ public class Book {
 	private Long id;
 	@Column(name = "isbn", nullable = false, unique = true)
 	private Long isbn;
-	@Column(name = "book_title", nullable = false, unique = false)
+	@Column(name = "book_title", nullable = false)
 	private String bookTitle;
-	
+	@Column(name = "book_in_stock", nullable = false)
+	private boolean inStock;
+	@Column(name = "book_last_modified", nullable = false)
+	private Date lastModified;
+
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private Author author;
-	
+
 	@Column(name = "publication_country", nullable = true, unique = false)
 	private String publicationCountry;
 	@Column(name = "publication_year", nullable = true, unique = false)
 	private Long publicationYear;
-	
-    @ManyToOne
-    @JoinColumn(name = "genre_id")
+
+	@ManyToOne
+	@JoinColumn(name = "genre_id")
 	private Genre genre;
-//	@Column(name = "genre_id")
-//	private Long genre;
-	
+	// @Column(name = "genre_id")
+	// private Long genre;
+
 	@Column(name = "book_description")
 	private String description;
 	// TODO: many-to-many author(s)
@@ -43,7 +49,7 @@ public class Book {
 	}
 
 	public Book(Long id, Long isbn, String bookTitle, String publicationCountry, Long publicationYear, Genre genre,
-			Author author, String description) {
+	        Author author, String description, boolean inStock, Date lastModified) {
 		this.id = id;
 		this.isbn = isbn;
 		this.bookTitle = bookTitle;
@@ -52,6 +58,8 @@ public class Book {
 		this.genre = genre;
 		this.author = author;
 		this.description = description;
+		this.inStock = inStock;
+		this.lastModified = lastModified;
 	}
 
 	public Long getId() {
@@ -116,6 +124,22 @@ public class Book {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public boolean isInStock() {
+		return inStock;
+	}
+
+	public void setInStock(boolean inStock) {
+		this.inStock = inStock;
+	}
+
+	public Date getLastModified() {
+		return lastModified;
+	}
+
+	public void setLastModified(Date lastModified) {
+		this.lastModified = lastModified;
 	}
 
 }

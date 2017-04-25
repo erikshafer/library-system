@@ -45,6 +45,15 @@ public class BookController {
 		return "viewBooks";
 	}
 	
+	// View the entire inventory
+	@RequestMapping(value = "/available", method = RequestMethod.GET)
+	public String viewAllAvailableBooks(Model model) {
+		model.addAttribute("inventory", bookService.findByInStock(true));
+		model.addAttribute("authors", authorService.findAll());
+		model.addAttribute("genres", genreService.findAll());
+		return "viewBooks";
+	}
+	
 	// Single book view
 	@RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
 	public String viewBook(@PathVariable Long id, Model model) {
