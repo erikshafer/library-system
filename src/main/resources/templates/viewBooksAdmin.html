@@ -7,8 +7,9 @@
 		<div class="row">
             <div class="panel-group">
                 <div class="panel panel-default gutter-5">
-                    <div class="panel-heading page-heading gutter-15"><p><strong>Information</strong></p></div>
+                    <div class="panel-heading page-danger gutter-15"><p><strong>Information</strong></p></div>
                     <div class="panel-body"><p class="text-default" th:text="${information}" /></div>
+                    <div class="panel-footer"><input type="button" class="btn btn-danger" name="Add Book" value="Add Book" onclick="window.location='/admin/add'" style="width: 100%;" /></div>
                 </div>
             </div>
 		</div>
@@ -20,18 +21,22 @@
             			<table id="table_units" class="table table-striped table-hover table-condensed">
             				<thead>
             					<tr class="row">
-            						<th class="col-xs-7 col-md-8"><strong>Title</strong></th>
-            						<th class="col-xs-3 col-md-2"><strong>Author</strong></th>
+            						<th class="col-xs-6 col-md-8"><strong>Title</strong></th>
+            						<th class="col-xs-2 col-md-2"><strong>Author</strong></th>
             						<th class="col-xs-2 col-md-2"><strong>Genre</strong></th>
+                                    <th class="col-xs-1 col-md-2"><strong>Edit</strong></th>
+                                    <th class="col-xs-1 col-md-2"><strong>Delete</strong></th>
             						<!-- <th class="col-lg-1 col-md-1 col-sm-1"><strong>Edit</strong></th>
             						<th class="col-lg-1 col-md-1 col-sm-1"><strong>Delete</strong></th> -->
             					</tr>
             				</thead>
             				<tbody>
             					<tr th:each="unit : ${inventory}" class="row">
-            						<td class="col-lg-7"><a th:href="@{/books/id/{id}(id=${unit.id})}"><span th:text="${unit.bookTitle}"/></a></td>
-            						<td class="col-lg-3"><a th:href="@{/authors/id/{id}(id=${unit.id})}"><span th:text="${unit.author.name}"/></a></td>
+            						<td class="col-lg-6"><a th:href="@{/books/id/{id}(id=${unit.id})}"><span th:text="${unit.bookTitle}"/></a></td>
+            						<td class="col-lg-2"><a th:href="@{/authors/id/{id}(id=${unit.id})}"><span th:text="${unit.author.name}"/></a></td>
             						<td class="col-lg-2"><a th:href="@{/books/genre/id/{id}(id=${unit.id})}"><span th:text="${unit.genre.name}"/></a></td>
+                                    <td class="col-lg-1"><a th:href="@{/admin/edit/{id}(id=${unit.id})}"><span class="label label-warning">EDIT</span></a></td>
+                                    <td class="col-lg-1"><a th:href="@{/admin/delete/{id}(id=${unit.id})}"><span class="label label-danger">DELETE</span></a></td>
             						<!-- <td th:text="${unit.price}!=null? ${unit.price} : 'NO PRICE LISTED'" class="col-lg-3 col-md-3 col-sm-3">Stock Price</td> -->
             						<!-- CUSTOMERS -->
             						<!-- 

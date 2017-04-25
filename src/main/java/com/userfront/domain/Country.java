@@ -8,10 +8,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Country {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "country_id")
 	private Long id;
+	
 	@Column(name = "country_name")
 	private String name;
 

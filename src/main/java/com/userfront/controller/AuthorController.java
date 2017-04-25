@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.userfront.service.AuthorService;
-import com.userfront.service.BookService;
 
 @Controller
 @RequestMapping("/authors")

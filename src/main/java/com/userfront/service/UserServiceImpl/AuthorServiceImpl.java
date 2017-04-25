@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.userfront.dao.AuthorDao;
 import com.userfront.domain.Author;
+import com.userfront.domain.Country;
 import com.userfront.service.AuthorService;
 
 @Service
@@ -32,9 +33,10 @@ public class AuthorServiceImpl implements AuthorService{
 		return authorDao.findAll();
 	}
 
+
 	@Override
-	public Author findByCountry(Long id) {
-		return authorDao.findByCountry(id);
+	public Author findByCountry(Country country) {
+		return authorDao.findByCountry(country);
 	}
 
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.userfront.dao.checkoutDao;
+import com.userfront.dao.CheckoutDao;
 import com.userfront.domain.Book;
 import com.userfront.domain.Checkout;
 import com.userfront.domain.User;
@@ -19,24 +19,24 @@ import com.userfront.service.CheckoutService;
 public class CheckoutServiceImpl implements CheckoutService {
 
 	@Autowired
-	private checkoutDao checkoutDao;
+	private CheckoutDao CheckoutDao;
 
 	public Checkout createCheckout(Checkout checkout) {
-		return checkoutDao.save(checkout);
+		return CheckoutDao.save(checkout);
 	}
 
 	public List<Checkout> findAll() {
-		return checkoutDao.findAll();
+		return CheckoutDao.findAll();
 	}
 
 	public Checkout findCheckout(Long id) {
-		return checkoutDao.findOne(id);
+		return CheckoutDao.findOne(id);
 	}
 
 	public void confirmCheckout(Long id) {
 		Checkout checkout = findCheckout(id);
 		checkout.setCheckedOut(true);
-		checkoutDao.save(checkout);
+		CheckoutDao.save(checkout);
 	}
 	
 	public List<Checkout> findUserPastDue(User user) {
@@ -49,13 +49,12 @@ public class CheckoutServiceImpl implements CheckoutService {
 				pastDue.add(currCheckout);
 			}
 		}
-		
 		return pastDue;
 	}
 
 	@Override
 	public List<Checkout> findByUser(User user) {
-		return checkoutDao.findByUser(user);
+		return CheckoutDao.findByUser(user);
 	}
 
 	@Override
@@ -65,9 +64,12 @@ public class CheckoutServiceImpl implements CheckoutService {
 	}
 
 	@Override
+	/**
+	 * @author TagnikHome
+	 * If true, that means the book is out on loan (borrowed).
+	 */
 	public List<Checkout> findByCheckedOut(Boolean out) {
-		// TODO Auto-generated method stub
-		return null;
+		return CheckoutDao.findByCheckedOut(out);	// true (0) = it's out
 	}
 
 }

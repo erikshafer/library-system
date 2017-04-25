@@ -11,8 +11,8 @@
                     <div class="panel-heading page-heading"><h2 class="display-2"><strong><span th:text="${unit.bookTitle}" /></strong></h2></div>
                     <div class="panel-body">
                         <input type="checkbox" class="read-more-state" id="post-1" />
-                        <h4><a th:href="@{/authors/id/{id}(id=${unit.author})}"><span th:text="${unit.author.name}" /></a></h4>
-                        <p class="read-more-wrap"><span class="read-more-target text-muted" th:text="${unit.author.country}" /><br /><span class="read-more-target" th:text="${unit.author.description}" /></p>
+                        <h4><a th:href="@{/authors/id/{id}(id=${unit.author.id})}"><span th:text="${unit.author.name}" /></a></h4>
+                        <p class="read-more-wrap"><span class="read-more-target text-muted" th:text="${unit.author.country.name}" /><br /><span class="read-more-target" th:text="${unit.author.description}" /></p>
                         <label for="post-1" class="read-more-trigger"></label>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                 <div class="panel-heading">Additional Information</div>
                 <div class="panel-body">
                     <div class="gutter-10 col-xs-12 col-md-4 col-lg-4">
-                        <p class="text-left text-primary"><strong>Country of Origin:</strong> <span th:text="${unit.publicationCountry}" /></p>
+                        <p class="text-left text-primary"><strong>Country of Origin:</strong> <span th:text="${unit.publicationCountry.name}" /></p>
                     </div>
                     <div class="gutter-10 col-xs-12 col-md-3 col-lg-3">
                         <p class="text-left text-primary"><strong>Published:</strong> <span th:text="${unit.publicationYear}" /></p>

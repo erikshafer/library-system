@@ -40,7 +40,17 @@ public class CheckoutController {
 		model.addAttribute("checkout", checkout);
 		model.addAttribute("book", bookService.findById(id));
 		model.addAttribute("dateString", "");
-
+		
+		boolean checkedOut = false;
+//		List<Book> checkedOutBooks = bookService.findByInStock(false);
+//		for (Book currentBook : checkedOutBooks) {
+			if (!bookService.findById(id).isInStock()) {
+				checkedOut = true;	// it's checked out
+				model.addAttribute("checkedOutBook", bookService.findById(id));	// add book to model
+//				break;
+			}
+//		}
+		model.addAttribute("checkedOutBool", checkedOut);	// available or not
 		return "checkoutConfirm";
 	}
 
@@ -50,6 +60,13 @@ public class CheckoutController {
 	public String createCheckoutPost(@ModelAttribute("checkout") Checkout checkout,
 	        @ModelAttribute("dateString") String date, Model model, Principal principal) throws ParseException {
 
+		// Double checks at transaction the book is in stock.
+		// If it isn't, will re-direct to checkout which will generate
+		// the not-in-stock message.
+		if(!checkout.getBook().isInStock()) {
+			return "redirect:/checkout/" + checkout.getBook().getId();
+		}
+		
 		// Java 8 methodology of getting date and time
 		LocalDateTime now = LocalDateTime.now();
 

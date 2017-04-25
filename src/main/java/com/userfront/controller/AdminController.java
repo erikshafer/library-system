@@ -20,8 +20,8 @@ import com.userfront.service.CountryService;
 import com.userfront.service.GenreService;
 
 @Controller
-@RequestMapping("/books")
-public class BookController {
+@RequestMapping("/admin")
+public class AdminController {
 
 	@Autowired
 	private BookService bookService;
@@ -34,31 +34,15 @@ public class BookController {
 	
 	@Autowired
 	private CountryService countryService;
-	
-	// Re-route
-	@RequestMapping(value = "/")
-	public String routeToAllBooksFromRoot() {
-		return "redirect:/books/available";
-	}
 
 	// View the entire inventory
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	public String viewAllBooks(Model model) {
+	@RequestMapping(value = "/books", method = RequestMethod.GET)
+	public String viewAllBooksAdmin(Model model) {
 		model.addAttribute("information", "Listed below are all books owned by the library. Click on the title, author, or genre to get more information.");
 		model.addAttribute("inventory", bookService.findAll());
 		model.addAttribute("authors", authorService.findAll());
 		model.addAttribute("genres", genreService.findAll());
-		return "viewBooks";
-	}
-	
-	// View the entire inventory
-	@RequestMapping(value = "/available", method = RequestMethod.GET)
-	public String viewAllAvailableBooks(Model model) {
-		model.addAttribute("information", "Listed below are all books available in the library. Click on the title, author, or genre to get more information.");
-		model.addAttribute("inventory", bookService.findByInStock(true));
-		model.addAttribute("authors", authorService.findAll());
-		model.addAttribute("genres", genreService.findAll());
-		return "viewBooks";
+		return "viewBooksAdmin";
 	}
 	
 	// Single book view
@@ -73,24 +57,17 @@ public class BookController {
 	
 	// Single stock edit
 	@RequestMapping(value = "/edit/{id}")
-	public String individualStockEdit(@PathVariable("id") Long id, Model model) {
+	public String individualBookEditAdmin(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("unit", bookService.findById(id));
 		model.addAttribute("authors", authorService.findAll());
 		model.addAttribute("genres", genreService.findAll());
 		model.addAttribute("countries", countryService.findAll());
 		return "editBook";
 	}
-
-	// Save edit
-	@RequestMapping(value = "saveEdit", method = RequestMethod.POST)
-	public String saveEdit(Book book) {
-		bookService.save(book);
-		return "redirect:/books/all";
-	}
 	
 	// New book
 	@RequestMapping(value = "/add")
-	public String addNewBook(Model model) {
+	public String addNewBookAdmin(Model model) {
 		Book newBook = new Book();
 		
 		// Java 8 methodology of getting date and time

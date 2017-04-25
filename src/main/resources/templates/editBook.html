@@ -11,7 +11,11 @@
 		</div>
 		<div class="row">
 			<form th:object="${unit}" th:action="@{/books/save}" action="#" method="post">
-			<input type="hidden" name="id" th:value="${unit.id}" />
+			<!-- Hidden values -->
+            <input type="hidden" name="id" th:value="${unit.id}" />
+            <input type="hidden" name="inStock" th:value="${unit.inStock}" />
+            <input type="hidden" name="lastModified" th:value="${unit.lastModified}" />
+            
             <div class="row justify-content-md-center">
                 <div class="form-group col-xs-12 col-md-6">
                     <div class="col-xs-12 col-md-3"><label for="title" class="cols-sm-3 control-label">Book Title</label></div>

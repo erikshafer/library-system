@@ -29,11 +29,13 @@ public class Book {
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private Author author;
-
-	@Column(name = "publication_country", nullable = true, unique = false)
-	private String publicationCountry;
-	@Column(name = "publication_year", nullable = true, unique = false)
-	private Long publicationYear;
+	
+	@ManyToOne
+	@JoinColumn(name = "country_id")
+	private Country country;
+	
+	@Column(name = "publication_year")
+	private Long year;
 
 	@ManyToOne
 	@JoinColumn(name = "genre_id")
@@ -48,13 +50,13 @@ public class Book {
 	public Book() {
 	}
 
-	public Book(Long id, Long isbn, String bookTitle, String publicationCountry, Long publicationYear, Genre genre,
+	public Book(Long id, Long isbn, String bookTitle, Country country, Long year, Genre genre,
 	        Author author, String description, boolean inStock, Date lastModified) {
 		this.id = id;
 		this.isbn = isbn;
 		this.bookTitle = bookTitle;
-		this.publicationCountry = publicationCountry;
-		this.publicationYear = publicationYear;
+		this.country = country;
+		this.year = year;
 		this.genre = genre;
 		this.author = author;
 		this.description = description;
@@ -86,20 +88,20 @@ public class Book {
 		this.bookTitle = bookTitle;
 	}
 
-	public String getPublicationCountry() {
-		return publicationCountry;
+	public Country getPublicationCountry() {
+		return country;
 	}
 
-	public void setPublicationCountry(String publicationCountry) {
-		this.publicationCountry = publicationCountry;
+	public void setPublicationCountry(Country publicationCountry) {
+		this.country = publicationCountry;
 	}
 
 	public Long getPublicationYear() {
-		return publicationYear;
+		return year;
 	}
 
 	public void setPublicationYear(Long publicationYear) {
-		this.publicationYear = publicationYear;
+		this.year = publicationYear;
 	}
 
 	public Genre getGenre() {
@@ -140,6 +142,13 @@ public class Book {
 
 	public void setLastModified(Date lastModified) {
 		this.lastModified = lastModified;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", isbn=" + isbn + ", bookTitle=" + bookTitle + ", inStock=" + inStock
+		        + ", lastModified=" + lastModified + ", author=" + author + ", publicationCountry=" + country
+		        + ", publicationYear=" + year + ", genre=" + genre + ", description=" + description + "]";
 	}
 
 }

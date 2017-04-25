@@ -9,7 +9,7 @@ import com.userfront.domain.Book;
 import com.userfront.domain.Checkout;
 import com.userfront.domain.User;
 
-public interface checkoutDao extends CrudRepository<Checkout, Long>{
+public interface CheckoutDao extends CrudRepository<Checkout, Long>{
 
 	List<Checkout> findAll();
 	List<Checkout> findByUser(User user);

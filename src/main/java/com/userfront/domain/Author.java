@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Author {
@@ -15,8 +17,11 @@ public class Author {
 	private Long id;
 	@Column(name = "author_name")
 	private String name;
-	@Column(name = "author_country")
-	private Long country;
+	
+	@ManyToOne
+	@JoinColumn(name = "country_id")
+	private Country country;
+	
 	@Column(name = "author_description")
 	private String description;
 
@@ -25,7 +30,7 @@ public class Author {
 
 	}
 
-	public Author(Long id, String name, Long country, String description) {
+	public Author(Long id, String name, Country country, String description) {
 		this.id = id;
 		this.name = name;
 		this.country = country;
@@ -48,11 +53,11 @@ public class Author {
 		this.name = name;
 	}
 
-	public Long getCountry() {
+	public Country getCountry() {
 		return country;
 	}
 
-	public void setCountry(Long country) {
+	public void setCountry(Country country) {
 		this.country = country;
 	}
 

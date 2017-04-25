@@ -66,18 +66,20 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a th:href="@{/userFront}">Currently Borrowed</a></li>
-                        <li><a th:href="@{/userFront}">Checkout History</a></li>
-                        <li><a th:href="@{/userFront}">Wish List</a></li>
+                        <li><a th:href="@{/userFront#checked-out}">Currently Borrowed</a></li>
+                        <li><a th:href="@{/userFront#past-due}">Past Due</a></li>
+                        <li><a th:href="@{/userFront#wish-list}">Wish List</a></li>
+                        <!-- <li><a th:href="@{/userFront#checkout-history}">Checkout History</a></li> -->
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a th:href="@{/books/}">All Books</a></li>
+                        <li><a th:href="@{/books/all}">All Books</a></li>
+                        <li><a th:href="@{/books/available}">Available Books</a></li>
                         <li><a th:href="@{/books/add}">Add Book</a></li>
                         <li><a th:href="@{/authors/}">Authors</a></li>
-                        <li><a th:href="@{/books/}">Genres</a></li>
+                        <!-- <li><a th:href="@{/books/}">Genres</a></li> -->
                     </ul>
                 </li>
                 <li class="dropdown">
