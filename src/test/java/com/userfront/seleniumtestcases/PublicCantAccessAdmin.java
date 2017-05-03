@@ -15,6 +15,8 @@ public class PublicCantAccessAdmin {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
+  
+  // Unable to pintpoint error.
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
