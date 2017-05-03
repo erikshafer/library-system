@@ -1,9 +1,11 @@
 package com.userfront.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.userfront.domain.Author;
 import com.userfront.domain.Book;
+import com.userfront.domain.Checkout;
 import com.userfront.domain.Genre;
 
 // TODO: fix this for Book
@@ -16,6 +18,7 @@ public interface BookService {
     List<Book> findByAuthor(Author author);
     List<Book> findByInStock(boolean available);
     void save (Book book);
+    void deleteById (long id);
 
 //    boolean checkUserExists(String username, String email);
 //

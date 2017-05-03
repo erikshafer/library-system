@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.userfront.domain.Book;
 import com.userfront.domain.Checkout;
 import com.userfront.domain.User;
 import com.userfront.service.BookService;
@@ -36,17 +37,22 @@ public class CheckoutController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String createCheckout(@ModelAttribute("id") Long id, Model model) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		LocalDateTime dueDateTime = currentDateTime.plusDays(6L).withHour(11).withMinute(59).withSecond(59);
+		String dueString = dueDateTime.format(formatter);
+		
 		Checkout checkout = new Checkout();
 		model.addAttribute("checkout", checkout);
 		model.addAttribute("book", bookService.findById(id));
-		model.addAttribute("dateString", "");
+		model.addAttribute("dateString", dueString);
 		
 		boolean checkedOut = false;
 //		List<Book> checkedOutBooks = bookService.findByInStock(false);
 //		for (Book currentBook : checkedOutBooks) {
 			if (!bookService.findById(id).isInStock()) {
 				checkedOut = true;	// it's checked out
-				model.addAttribute("checkedOutBook", bookService.findById(id));	// add book to model
+				model.addAttribute("checkedOutBook", checkoutService.findCheckout(id));	// add book to model
 //				break;
 			}
 //		}
@@ -62,10 +68,15 @@ public class CheckoutController {
 
 		// Double checks at transaction the book is in stock.
 		// If it isn't, will re-direct to checkout which will generate
-		// the not-in-stock message.
+		// the not-in-stock message. Otherwise, proceed with the rest of the method.
 		if(!checkout.getBook().isInStock()) {
 			return "redirect:/checkout/" + checkout.getBook().getId();
 		}
+		
+		// Grab book, set inStock to false, and save
+		Book book = bookService.findById(checkout.getBook().getId());
+		book.setInStock(false);
+		bookService.save(book);
 		
 		// Java 8 methodology of getting date and time
 		LocalDateTime now = LocalDateTime.now();
@@ -80,7 +91,8 @@ public class CheckoutController {
 		Date d0 = format1.parse(formatDateTime);
 		Date d1 = format1.parse(date);
 
-		// Insert into entity.
+		// Insert details into the Checkout entity
+		// Please note using Book and Checkout is not an ideal structure for any of this.
 		checkout.setDateBorrowed(d0);
 		checkout.setDateDue(d1);
 		checkout.setCheckedOut(true);
@@ -91,7 +103,7 @@ public class CheckoutController {
 		checkoutService.createCheckout(checkout);
 
 		// This should go to their checked out books
-		return "redirect:/books/all";
+		return "redirect:/books/available";
 	}
 
 }

@@ -61,4 +61,9 @@ public class BookServiceImpl implements BookService {
 		return bookDao.findByInStock(available);
 	}
 
+	@Override
+	public void deleteById(long id) {
+		bookDao.delete(id);
+	}
+
 }

@@ -63,8 +63,8 @@
                         <a th:href="@{/books/edit/{id}(id=${unit.id})}"><span class="btn btn-warning btn-block col-xs-12 btn-lg">Edit Book</span></a>
                         <!-- <input type="button" class="btn btn-info btn-block" name="return" value="Wish list" onclick="window.location='/books/all'" style="width: 100%;" /> -->
                     </div>
-                    <div class="col-xs-12 col-md-6 col-lg-3">
-                        <a th:href="@{/books/edit/{id}(id=${unit.id})}"><span class="btn btn-danger btn-block col-xs-12 btn-lg">Delete Book</span></a>
+                    <div class="col-xs-12 col-md-6 col-lg-3" id="deletediv">
+                        <a th:href="@{/admin/delete/{id}(id=${unit.id})}" id="deletehref"><span class="btn btn-danger btn-block col-xs-12 btn-lg" id="deletebtn">Delete Book</span></a>
                         <!-- <input type="button" class="btn btn-info btn-block" name="return" value="Wish list" onclick="window.location='/books/all'" style="width: 100%;" /> -->
                     </div>
                 </div>

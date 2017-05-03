@@ -77,8 +77,15 @@
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/books/all}">All Books</a></li>
                         <li><a th:href="@{/books/available}">Available Books</a></li>
-                        <li><a th:href="@{/books/add}">Add Book</a></li>
                         <li><a th:href="@{/authors/}">Authors</a></li>
+                        <!-- <li><a th:href="@{/books/}">Genres</a></li> -->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Options <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/admin//checkedout/list}">Checked Out List</a></li>
+                        <li><a th:href="@{/admin/add}">Add Book</a></li>
                         <!-- <li><a th:href="@{/books/}">Genres</a></li> -->
                     </ul>
                 </li>
@@ -89,7 +96,7 @@
                     </ul> -->
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/appointment/create}">Reserve a Room</a></li>
-                        <li><a th:href="@{/appointment/create}">View Reservations</a></li>
+                        <li><a th:href="@{/userFront#reservations}">View Reservations</a></li>
                     </ul>
                 </li>
             </ul>

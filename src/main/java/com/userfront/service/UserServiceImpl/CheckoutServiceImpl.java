@@ -1,9 +1,6 @@
 package com.userfront.service.UserServiceImpl;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,42 +16,42 @@ import com.userfront.service.CheckoutService;
 public class CheckoutServiceImpl implements CheckoutService {
 
 	@Autowired
-	private CheckoutDao CheckoutDao;
+	private CheckoutDao checkoutDao;
 
 	public Checkout createCheckout(Checkout checkout) {
-		return CheckoutDao.save(checkout);
+		return checkoutDao.save(checkout);
 	}
 
 	public List<Checkout> findAll() {
-		return CheckoutDao.findAll();
+		return checkoutDao.findAll();
 	}
 
 	public Checkout findCheckout(Long id) {
-		return CheckoutDao.findOne(id);
+		return checkoutDao.findOne(id);
 	}
 
 	public void confirmCheckout(Long id) {
 		Checkout checkout = findCheckout(id);
 		checkout.setCheckedOut(true);
-		CheckoutDao.save(checkout);
+		checkoutDao.save(checkout);
 	}
 	
 	public List<Checkout> findUserPastDue(User user) {
-		List<Checkout> pastDue = new ArrayList<>();
-		LocalDate localDate = LocalDate.now();
-		Date today = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		
-		for (Checkout currCheckout : findByUser(user)) {
-			if (currCheckout.getDateDue().before(today)); {
-				pastDue.add(currCheckout);
-			}
-		}
-		return pastDue;
+//		List<Checkout> pastDue = new ArrayList<>();
+//		LocalDate localDate = LocalDate.now();
+//		Date today = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+//		
+//		for (Checkout currCheckout : findByUser(user)) {
+//			if (currCheckout.getDateDue().before(today)); {
+//				pastDue.add(currCheckout);
+//			}
+//		}
+		return null;
 	}
 
 	@Override
 	public List<Checkout> findByUser(User user) {
-		return CheckoutDao.findByUser(user);
+		return checkoutDao.findByUser(user);
 	}
 
 	@Override
@@ -69,7 +66,18 @@ public class CheckoutServiceImpl implements CheckoutService {
 	 * If true, that means the book is out on loan (borrowed).
 	 */
 	public List<Checkout> findByCheckedOut(Boolean out) {
-		return CheckoutDao.findByCheckedOut(out);	// true (0) = it's out
+		return checkoutDao.findByCheckedOut(out);	// true (0) = it's out
+	}
+
+	@Override
+	public List<Checkout> findByDateDueBeforeAndUser(Date date, User user) {
+		return checkoutDao.findByDateDueBeforeAndUser(date, user);
+	}
+
+	@Override
+	public void save(Checkout checkout) {
+		checkoutDao.save(checkout);
+		
 	}
 
 }

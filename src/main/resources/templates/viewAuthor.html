@@ -1,101 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Inventory</title>
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<!-- <link rel="stylesheet" href="css/site.css" /> -->
-
-<!-- Custom in-line CSS until I better fit this into my environment / container -->
-<!-- At the end of the day this is all for the mock-up until using UPRR standards -->
-<style>
-body {
-	font-style: normal;
-	font-variant-ligatures: normal;
-	font-variant-caps: normal;
-	font-variant-numeric: normal;
-	font-weight: normal;
-	font-stretch: normal;
-	font-size: 12px;
-	line-height: 1.231;
-	font-family: verdana, arial, helvetica, clean, sans-serif;
-}
-
-table {
-	display: table;
-	border-collapse: separate;
-	border-spacing: 0;
-}
-</style>
-
-</head>
-<body>
-	<div class="container divBookDetails">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+	<div class="container">
+        <!-- HEADER -->
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<h1 class="display-1">
-					<span th:text="${unit.name}" />
-				</h1>
-				<h5 class="display-5">
-					<span th:text="${unit.country}" />
-				</h5>
-			</div>
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading page-heading"><h2 class="display-2"><strong><span th:text="${unit.name}" /></strong></h2></div>
+                    <div class="panel-body">
+                        <h4 class="display-4" th:text="${unit.country.name}" />
+                        <p th:text="${unit.description}" />
+                    </div>
+                </div>
+            </div>
 		</div>
 		<div class="row">
-			<div class="panel-group">
-				<div class="panel panel-primary">
-					<div class="panel-heading">Books</div>
-					<div class="panel-body">
-						<table id="example" class="display" cellspacing="1" width="100%">
-							<thead>
-								<tr>
-									<th>Title</th>
-									<th>Published</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Harry Porter</td>
-									<td>2016/04/25</td>
-									<td>$800</td>
-								</tr>
-								<tr>
-									<td>Twilight</td>
-									<td>2016/07/25</td>
-									<td>$750</td>
-								</tr>
-								<tr>
-									<td>Game Of Thrones</td>
-									<td>2017/01/12</td>
-									<td>$200</td>
-								</tr>
-								<tr>
-									<td>Naruto Shippuden</td>
-									<td>2016/03/29</td>
-									<td>$460</td>
-								</tr>
-								<tr>
-									<td>Hunger Games</td>
-									<td>2017/02/03</td>
-									<td>$235</td>
-								</tr>
-								<tr>
-									<td>Maze Runner</td>
-									<td>2015/05/03</td>
-									<td>$163</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><h2>Books</h2></div>
+                    <div class="panel-body">
+            			<table id="table_units" class="table table-striped table-hover table-condensed">
+            				<thead>
+            					<tr class="row">
+            						<th class="col-xs-9"><strong>Title</strong></th>
+            						<th class="col-xs-3"><strong>Genre</strong></th>
+            					</tr>
+            				</thead>
+            				<tbody>
+            					<tr th:each="unit : ${inventory}" class="row">
+            						<td class="col-xs-9"><a th:href="@{/books/id/{id}(id=${unit.id})}"><span th:text="${unit.bookTitle}"/></a></td>
+            						<td class="col-xs-3"><a th:href="@{/books/genre/id/{id}(id=${unit.id})}"><span th:text="${unit.genre.name}"/></a></td>
+
+            					</tr>
+            				</tbody>
+            			</table>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
+    <div class="container">
+		<div class="row">
+    		<input type="button" class="btn btn-primary" name="return" value="Return" onclick="window.location='/books/available'" style="width: 100%;" />
+		</div>
+    </div>
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
 </body>
 </html>

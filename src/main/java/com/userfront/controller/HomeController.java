@@ -1,6 +1,7 @@
 package com.userfront.controller;
 
 import java.security.Principal;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,24 +23,24 @@ import com.userfront.service.UserService;
 @Controller
 public class HomeController {
 
-    @Autowired
-    private UserService userService;
-    
+	@Autowired
+	private UserService userService;
+
 	@Autowired
 	private BookService bookService;
-	
+
 	@Autowired
 	private CheckoutService checkoutService;
 
 	@Autowired
 	private RoleDao roleDao;
-	
+
 	@Autowired
 	private AppointmentService appointmentService;
 
 	@RequestMapping("/")
 	public String home() {
-		return "redirect:/index";
+		return "redirect:/landing";
 	}
 
 	@RequestMapping("/index")
@@ -47,6 +48,11 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping("/login")
+	public String loginRouteToUserFront() {
+		return "redirect:/userFront";
+	}
+
 	@RequestMapping("/landing")
 	public String landing() {
 		return "landing";
@@ -81,23 +87,23 @@ public class HomeController {
 			// take care of this.
 			userRoles.add(new UserRole(user, roleDao.findByName("ROLE_USER")));
 			userService.createUser(user, userRoles);
-			return "redirect:/";
+			return "redirect:/index"; // go to user profile
 		}
 	}
 
+	// The 'userFront' is basically what the user sees once logged in. 
+	// It's their new homepage, of sorts.
 	@RequestMapping("/userFront")
 	public String userFront(Principal principal, Model model) {
+
 		User user = userService.findByUsername(principal.getName());
-		
-        model.addAttribute("books", bookService.findAll());
-        model.addAttribute("checkedout", checkoutService.findByUser(user));
-        model.addAttribute("appointments", appointmentService.findByUser(user));
-        
-		// PrimaryAccount primaryAccount = user.getPrimaryAccount();
-		// SavingsAccount savingsAccount = user.getSavingsAccount();
-		//
-		// model.addAttribute("primaryAccount", primaryAccount);
-		// model.addAttribute("savingsAccount", savingsAccount);
+
+		java.sql.Date today = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+		model.addAttribute("books", bookService.findAll());
+		model.addAttribute("checkedout", checkoutService.findByUser(user));
+		model.addAttribute("pastdue", checkoutService.findByDateDueBeforeAndUser(today, user));
+		model.addAttribute("appointments", appointmentService.findByUser(user));
 
 		return "userFront";
 	}

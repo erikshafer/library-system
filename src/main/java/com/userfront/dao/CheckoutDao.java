@@ -18,5 +18,6 @@ public interface CheckoutDao extends CrudRepository<Checkout, Long>{
 	List<Checkout> findByDateDue(Date date);
 	List<Checkout> findByDateReturned(Date date);
 	List<Checkout> findByCheckedOut(Boolean out);
+	List<Checkout> findByDateDueBeforeAndUser(Date date, User user);
 
 }

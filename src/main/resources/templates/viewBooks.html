@@ -30,7 +30,7 @@
             				<tbody>
             					<tr th:each="unit : ${inventory}" class="row">
             						<td class="col-lg-7"><a th:href="@{/books/id/{id}(id=${unit.id})}"><span th:text="${unit.bookTitle}"/></a></td>
-            						<td class="col-lg-3"><a th:href="@{/authors/id/{id}(id=${unit.id})}"><span th:text="${unit.author.name}"/></a></td>
+            						<td class="col-lg-3"><a th:href="@{/authors/id/{id}(id=${unit.author.id})}"><span th:text="${unit.author.name}"/></a></td>
             						<td class="col-lg-2"><a th:href="@{/books/genre/id/{id}(id=${unit.id})}"><span th:text="${unit.genre.name}"/></a></td>
             						<!-- <td th:text="${unit.price}!=null? ${unit.price} : 'NO PRICE LISTED'" class="col-lg-3 col-md-3 col-sm-3">Stock Price</td> -->
             						<!-- CUSTOMERS -->

@@ -12,41 +12,51 @@
                         <h3>We Apologize</h3>
                     </div>
                     <div class="panel-body">
-                        <p><strong><span th:text="${book.bookTitle}" /></strong> is currently checked out. It is expected to be back on <strong><span th:text="${#dates.format(checkedOutBook.dateDue, 'dd-MMM-yyyy')}" /></strong></p>
+                        <p><strong><span th:text="${book.bookTitle}" /></strong> is currently checked out.</p>
                     </div>
                 </div>
             </div>
         </div>
         <div th:unless="${checkedOutBool}" class="col-xs-12">
-            <h2 class="display-2">Confirm Checkout</h2>
-        </div>
-        <form th:object="${checkout}" th:action="@{/checkout/save}" action="#" method="post">
-            <input type="hidden" name="checkoutId" th:value="${checkout.checkoutId}"/>
-            <input type="hidden" name="book" th:value="${book.id}" />
-            <div th:unless="${checkedOutBool}" class="form-group">
-                <div class="col-xs-12 col-md-4"><label for="bookTitle">Book's title: </label><span th:text="${book.bookTitle}" /></div> 
-                <div class="col-xs-12 col-md-4"><label for="bookTitle">Book's ID: </label><span th:text="${book.id}" /></div>
-                <div class="col-xs-12 col-md-4"><label for="bookTitle">Book's ISBN: </label><span th:text="${book.isbn}" /></div>
-                <!-- <label for="dateDue">Date Returning: </label>
-                <input type="date" th:value="${checkout.dateDue}" th:field="${checkout.dateDue}" id="dateDue"/>-->
-            </div>
-            <div th:if="${checkedOutBool}" class="form-group">
-                <input type="button" class="btn btn-primary" name="return" value="Return" onclick="window.location='/books/available'" style="width: 100%;" />
-            </div>
-            <div th:unless="${checkedOutBool}" class="form-group">
-                <label for="dateString">Pick Return Date and Time:</label>
-                <div class="input-append date form_datetime input-group" data-date="2017-04-24T15:25:00Z">
-                    <input class="form-control" type="text" value="" readonly="readonly"
-                           th:value="${dateString}" name="dateString"
-                           id="dateString" required="required"/>
-                    <span class="input-group-addon"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+            <div class="panel-group">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3>Confirm Checkout</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Please confirm the details below are correct</p>
+                        <form th:object="${checkout}" th:action="@{/checkout/save}" action="#" method="post">
+                            <input type="hidden" name="checkoutId" th:value="${checkout.checkoutId}"/>
+                            <input type="hidden" name="book" th:value="${book.id}" />
+                                <div class="col-xs-12 col-md-4"><label for="bookTitle">Book's title: </label> <p th:text="${book.bookTitle}" /></div> 
+                                <div class="col-xs-12 col-md-4"><label for="bookTitle">Book's ID: </label> <p th:text="${book.id}" /></div>
+                                <div class="col-xs-12 col-md-4"><label for="bookTitle">Book's ISBN: </label> <p th:text="${book.isbn}" /></div>
+                                <hr />
+                                <div class="col-xs-12 col-md-12"><label for="dateString">Pick Return Date and Time:</label></div>
+                                <input type="hidden" name="dateString" th:value="${dateString}" />
+                                <div class="col-xs-12 col-md-12"><strong><h3 class="display-3" th:text="${dateString}" /></strong></div>
+                            <div th:if="${checkedOutBool}" class="form-group">
+                                <input type="button" class="btn btn-primary" name="return" value="Return" onclick="window.location='/books/available'" style="width: 100%;" />
+                            </div>
+                            <div th:unless="${checkedOutBool}" class="form-group">
+                
+                                <!-- 
+                                <div class="input-append date form_datetime input-group" data-date="2017-05-01T15:25:00Z">
+                                    <input class="form-control" type="text" value="" readonly="readonly"
+                                           th:value="${dateString}" name="dateString"
+                                           id="dateString" required="required"/>
+                                    <span class="input-group-addon"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                </div>
+                                 -->
+                                <input type="submit" class="btn btn-primary btn-lg btn-success" id="confirmcheckout" value="Confirm Checkout" style="width: 100%;" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <input type="submit" class="btn btn-primary btn-lg btn-success" value="Confirm Checkout" style="width: 100%;" />
             </div>
-        </form>
+        </div>
     </div>
-    <br/>
 </div>
 
 <div th:replace="common/header :: body-bottom-scripts" />

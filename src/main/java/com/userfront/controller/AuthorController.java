@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.userfront.service.AuthorService;
+import com.userfront.service.BookService;
 
 @Controller
 @RequestMapping("/authors")
@@ -15,6 +16,9 @@ public class AuthorController {
 	
 	@Autowired
 	private AuthorService authorService;
+	
+	@Autowired
+	private BookService bookService;
 
 	// Re-route
 	@RequestMapping(value = "/")
@@ -36,6 +40,7 @@ public class AuthorController {
 			return "redirect:/authors/all";
 		}
 		model.addAttribute("unit", authorService.findById(id));
+		model.addAttribute("inventory", bookService.findByAuthor(authorService.findById(id)));
 		return "viewAuthor";
 	}
 

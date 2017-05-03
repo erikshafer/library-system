@@ -119,6 +119,12 @@ public class BookController {
 		model.addAttribute("countries", countryService.findAll());
 		return "editBook";
 	}
+	
+	// Delete
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String deleteBookNonAdminController(@PathVariable("id") Long id, Model model) {
+		return "redirect:/admin/delete/" + id;
+	}
 
 	// Save
 	@RequestMapping(value = "/save", method = RequestMethod.POST)

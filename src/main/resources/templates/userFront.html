@@ -27,8 +27,8 @@
                     </table>
                 </div>
                 <div class="panel-footer panel-default">
-                    <a href="@{/}">
-                    <span class="pull-left">View More Details</span>
+                    <a th:href="@{/books/available}">
+                    <span class="pull-left" id="checkout-books">Checkout Available Books</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                     </a>
@@ -49,7 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="checkedBook : ${checkedout}" class="row">
+                            <tr th:each="checkedBook : ${pastdue}" class="row">
                                 <td class="col-xs-8"><a th:href="@{/books/id/{id}(id=${checkedBook.book.id})}"><span th:text="${checkedBook.book.bookTitle}"/></a></td>
                                 <td class="col-xs-4"><span th:text="${#dates.format(checkedBook.dateDue, 'dd-MMM-yyyy')}" /></td>
                             </tr>
@@ -57,8 +57,8 @@
                     </table>
                 </div>
                 <div class="panel-footer panel-default">
-                    <a href="@{/}">
-                    <span class="pull-left">View More Details</span>
+                    <a th:href="@{/books/available}">
+                    <span class="pull-left" id="checkout-books">Checkout Available Books</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                     </a>
@@ -89,7 +89,7 @@
                     </table>
                 </div>
                 <div class="panel-footer panel-default">
-                    <a href="@{/}">
+                    <a th:href="@{/}">
                     <span class="pull-left">View More Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
