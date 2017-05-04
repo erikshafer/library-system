@@ -7,41 +7,49 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
 public class InvalidLogin {
-  private WebDriver driver;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
+    private WebDriver driver;
+    private String baseUrl = "http://localhost:8080/";
+    private boolean acceptNextAlert = true;
+    private StringBuffer verificationErrors = new StringBuffer();
+    private final static String driverLocation = "lib/chromedriver.exe";
 
+  @BeforeClass
+  public static void init() {
+	  System.setProperty("webdriver.chrome.driver", "C:/Users/TagnikHome/Downloads/CSCI_4830/chromedriver.exe");
+  }
+  
   @Before
-  public void setUp() throws Exception {
-      //System.setProperty("webdriver.chrome.driver", "C:/Users/TagnikHome/Downloads/CSCI_4830/chromedriver.exe");
-      //WebDriver driver = new ChromeDriver();
-	  driver = new FirefoxDriver();
-      //driver.get("http://www.google.com");
-    baseUrl = "http://localhost:8080/";
-    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+  public void setUp() throws Exception {        
+      ChromeOptions options = new ChromeOptions();
+      options.addArguments("--disable-web-security");
+      
+      DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+      capabilities.setCapability("binary", driverLocation);
+      capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+      
+      driver = new ChromeDriver(capabilities);
+      driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
   }
 
   @Test
   public void testInvalidLogin() throws Exception {
     driver.get(baseUrl + "/logout");
-    Thread.sleep(2000);
+    Thread.sleep(500);
     driver.get(baseUrl + "/index?error");
     Thread.sleep(2000);
     driver.findElement(By.id("username")).clear();
-    Thread.sleep(2000);
     driver.findElement(By.id("username")).sendKeys("invaliduser");
-    Thread.sleep(2000);
     driver.findElement(By.id("password")).clear();
-    Thread.sleep(2000);
     driver.findElement(By.id("password")).sendKeys("invalidpass");
-    Thread.sleep(2000);
+    Thread.sleep(1500);
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    Thread.sleep(2000);
+    Thread.sleep(500);
     assertTrue(driver.findElement(By.cssSelector("div.bg-danger")).getText().matches("^Invalid username[\\s\\S]*$"));
   }
 

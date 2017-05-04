@@ -6,20 +6,35 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
 public class LoginAndChangePhone {
-  private WebDriver driver;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
+    private WebDriver driver;
+    private String baseUrl = "http://localhost:8080/";
+    private boolean acceptNextAlert = true;
+    private StringBuffer verificationErrors = new StringBuffer();
+    private final static String driverLocation = "lib/chromedriver.exe";
 
+  @BeforeClass
+  public static void init() {
+	  System.setProperty("webdriver.chrome.driver", "C:/Users/TagnikHome/Downloads/CSCI_4830/chromedriver.exe");
+  }
+  
   @Before
-  public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "http://localhost:8080/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  public void setUp() throws Exception {        
+      ChromeOptions options = new ChromeOptions();
+      options.addArguments("--disable-web-security");
+      
+      DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+      capabilities.setCapability("binary", driverLocation);
+      capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+      
+      driver = new ChromeDriver(capabilities);
+      driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
   }
 
   @Test
